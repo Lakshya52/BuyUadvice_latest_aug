@@ -1,0 +1,78 @@
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,200..800;1,200..800&display=swap');
+@import "tailwindcss";
+
+:root{
+    --color-primary: #182B4F;
+    --color-white: #F8F8F8;
+    --color-black: #121212;
+    --color-accent: #2FA4A9;
+    --color-accent-light: #CFE9EC;
+}
+
+*{
+    font-family: "Plus Jakarta Sans", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 500;
+    font-style: normal;
+}
+
+html, body{
+    /* background-color: var(--color-white); */
+    background-color: #fbfaf7;
+}
+
+.btn-primary{
+    padding: 11px 27px;
+    font-family: "Plus Jakarta Sans", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 500;
+    font-style: normal;
+    background-color: var(--color-primary);
+    color: var(--color-white);
+    border-radius: 7px;
+    cursor: pointer;
+}
+.btn-primary:hover{
+    background-color: var(--color-black);
+}
+.btn-border{
+    padding: 11px 27px;
+    font-family: "Plus Jakarta Sans", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 500;
+    font-style: normal;
+    border: 1px solid var(--color-primary);
+    /* border: "1px solid var(--color-primary)"; */
+    color: var(--color-primary);
+    border-radius: 7px;
+    cursor: pointer;
+}
+.btn-border:hover{
+    background-color: var(--color-black);
+    color: var(--color-white);
+}
+
+.font-jakarta {
+  font-family: "Plus Jakarta Sans", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 500;
+  font-style: normal;
+}
+
+.heading{
+    color: var(--color-primary);
+    font-family: "Plus Jakarta Sans", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 700;
+    font-style: normal;
+    font-size: 50px;
+}
+
+.para{
+    color: var(--color-primary);
+    font-family: "Plus Jakarta Sans", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 500;
+    font-style: normal;
+    font-size: 25px;
+}
