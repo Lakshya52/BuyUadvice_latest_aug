@@ -8,6 +8,7 @@ export const useAuth = () => useContext(AuthContext);
 export const AuthProvider = ({ children }) => {
   const [isLoginOpen, setIsLoginOpen] = useState(false);
   const [user, setUser] = useState(null);
+  const [hasPassword, setHasPassword] = useState(false);
   const [loading, setLoading] = useState(true);
 
   const openLogin = () => setIsLoginOpen(true);
@@ -22,15 +23,19 @@ export const AuthProvider = ({ children }) => {
     fetch('/backend/auth/check.php', { credentials: 'include' })
       .then(res => res.ok ? res.json() : null)
       .then(data => {
-        if (data?.authenticated) setUser(data.user);
+        if (data?.authenticated) {
+          setUser(data.user);
+          setHasPassword(data.has_password);
+        }
       })
       .catch(() => {})
       .finally(() => setLoading(false));
   }, []);
 
-  const loginUser = (userData) => {
+  const loginUser = (userData, closeModal = true, userHasPassword = true) => {
     setUser(userData);
-    closeLogin();
+    setHasPassword(userHasPassword);
+    if (closeModal) closeLogin();
   };
 
   const logout = async () => {
@@ -42,7 +47,7 @@ export const AuthProvider = ({ children }) => {
   };
 
   return (
-    <AuthContext.Provider value={{ isLoginOpen, openLogin, closeLogin, user, loginUser, logout, loading }}>
+    <AuthContext.Provider value={{ isLoginOpen, openLogin, closeLogin, user, loginUser, logout, loading, hasPassword, setHasPassword }}>
       {children}
       <LoginModal />
     </AuthContext.Provider>

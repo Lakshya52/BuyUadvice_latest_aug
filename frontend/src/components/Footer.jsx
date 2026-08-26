@@ -22,8 +22,8 @@ const Footer = () => {
     { label: 'Vendor Registration', to: '/partner' },
     { label: 'All Services', to: '/services' },
     { label: 'Contact Us', to: '/contact' },
-    { label: 'Terms & Conditions', to: '#' },
-    { label: 'Privacy Policy', to: '#' },
+    { label: 'Terms & Conditions', to: '/terms' },
+    { label: 'Privacy Policy', to: '/privacy' },
     { label: 'Customer Support', to: '/contact' },
   ];
 
@@ -51,8 +51,8 @@ const Footer = () => {
   ];
 
   return (
-    <footer className="w-full bg-[#cfe9ec] text-[#182b4f] px-6 md:px-[100px] pt-16 pb-8">
-      <div className="max-w-[1440px] mx-auto">
+    <footer className="w-full bg-[#cfe9ec] text-[#182b4f] px-6 md:px-25 pt-16 pb-8">
+      <div className="max-w-360 mx-auto">
         {/* Top Section */}
         <div className="grid grid-cols-1 md:grid-cols-12 gap-8 md:gap-12 pb-12">
           {/* Logo and Description */}

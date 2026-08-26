@@ -36,30 +36,32 @@ const Navbar = () => {
 
   return (
     <>
-        <div className={`sticky top-0 z-50 flex items-center justify-between h-[100px] px-[100px] bg-white transition-transform duration-300 ${hidden ? '-translate-y-full' : 'translate-y-0'}`}>
-            <Link to="/">
-                <img src="/Logo.png" alt="BuyUadvice logo" />
-            </Link>
-            <div className='flex gap-6 items-center justify-center'>
-                {navLinks.map((link) => (
-                  <Link
-                    key={link.to}
-                    to={link.to}
-                    className={`relative py-1 after:content-[''] after:absolute after:bottom-0 after:left-0 after:h-[2px] after:bg-[var(--color-accent)] after:transition-all after:duration-300 hover:after:w-full ${pathname === link.to ? "after:w-full" : "after:w-0"}`}
-                  >
-                    {link.label}
-                  </Link>
-                ))}
-                {user ? (
-                  <div className='flex gap-4 items-center'>
-                    <Link to="/dashboard" className='btn-primary'>{user.name}</Link>
-                    <button onClick={logout} className='text-[15px] text-gray-500 hover:text-gray-800 cursor-pointer transition-colors'>Logout</button>
-                  </div>
-                ) : (
-                  <button onClick={openLogin} className='btn-primary'>Login</button>
-                )}
-            </div>
-        </div>
+      <div className={`sticky top-0 z-50 w-full flex items-center justify-center px-25 transition-transform duration-300 bg-white ${hidden ? '-translate-y-full' : 'translate-y-0'} `}>
+          <div className={`w-full flex items-center justify-between h-25 max-w-360 mx-auto bg-white `} >
+              <Link to="/" className='outline-none' >
+                  <img src="/Logo.png" alt="BuyUadvice logo" />
+              </Link>
+              <div className='flex gap-6 items-center justify-center'>
+                  {navLinks.map((link) => (
+                    <Link
+                      key={link.to}
+                      to={link.to}
+                      className={`relative py-1 after:content-[''] after:absolute after:bottom-0 after:left-0 after:h-0.5 after:bg-(--color-accent) after:transition-all after:duration-300 hover:after:w-full ${pathname === link.to ? "after:w-full" : "after:w-0"}`}
+                      >
+                      {link.label}
+                    </Link>
+                  ))}
+                  {user ? (
+                    <div className='flex gap-4 items-center'>
+                      <Link to="/dashboard" className='btn-primary'>{user.name}</Link>
+                      <button onClick={logout} className='text-[15px] text-gray-500 hover:text-gray-800 cursor-pointer transition-colors'>Logout</button>
+                    </div>
+                  ) : (
+                    <button onClick={openLogin} className='btn-primary'>Login</button>
+                  )}
+              </div>
+          </div>
+      </div>
     </>
   )
 }

@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import gsap from 'gsap'
 import { Link } from "react-router-dom"
 import { Building2, Receipt, Landmark, Banknote, BadgeCheck, ArrowRight, FileText, Utensils, Rocket, Globe, Ship, FileCheck, ArrowUpRight, Bold, Plus, Minus } from 'lucide-react'
@@ -99,37 +99,53 @@ const stepsData = [
     num: "01",
     title: "Choose the Right Business Structure",
     desc: "Select the ideal business entity based on your goals, industry, and future growth plans. Our experts help you make the right choice from day one.",
-    img: "/step1.png"
+    img: "/servicesimages/step1.jpg"
   },
   {
     num: "02",
     title: "Register Your Business",
     desc: "Complete your business registration quickly and hassle-free. We handle the documentation and legal formalities so you can focus on building your business.",
-    img: "/step2.png"
+    img: "servicesimages/step2.jpg"
   },
   {
     num: "03",
     title: "Set Up Tax & Compliance",
     desc: "Get your GST registration, PAN, TAN, and other essential tax compliances completed with expert assistance, ensuring your business is ready to operate.",
-    img: "/step3.png"
+    // img: "https://images.unsplash.com/photo-1741090255478-f7c31638b8a6?w=800&h=600&fit=crop&q=80"
+    img: "heroimages/Hero4.jpg"
   },
   {
     num: "04",
     title: "Stay Compliant & Grow",
     desc: "From GST returns and ROC filings to accounting and annual compliance, we help your business stay compliant while you focus on growth.",
-    img: "/step4.png"
+    img: "heroimages/Hero3.jpg"
   }
 ];
 
 
+const heroImages = [
+  '/heroimages/Hero2.jpg',
+  '/heroimages/Hero1.jpg',
+  '/heroimages/Hero4.jpg',
+  '/heroimages/Hero3.jpg',
+]
+
 const Landing = () => {
   const { openLogin } = useAuth();
+  const [heroIndex, setHeroIndex] = useState(0);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setHeroIndex(prev => (prev + 1) % heroImages.length);
+    }, 2000);
+    return () => clearInterval(interval);
+  }, []);
   
   return (
     <>
       {/* hero */}
-      <div className="relative h-[calc(100dvh-100px)] bg-[url('/BgEffects.svg')] bg-cover bg-no-repeat bg-center flex items-center justify-between w-full overflow-hidden">
-        <div className='flex items-center justify-between w-full mx-[100px] gap-[50px] pb-10' >
+      <div className="relative h-[calc(100dvh-100px)] bg-[url('/BgEffects.svg')] bg-cover bg-no-repeat bg-center flex items-center justify-center w-full overflow-hidden">
+        <div className='flex items-center justify-between w-full mx-25 gap-[50px] pb-10 max-w-360 h-full' >
           
           {/* hero left */}
           <div className='flex items-start flex-col gap-[17px] w-1/2'>
@@ -142,42 +158,62 @@ const Landing = () => {
               </Link>
             </div>
           </div>
+          
           {/* hero right */}
-          <div className='flex items-start flex-col gap-[17px] '>
-            <img src="/HeroImg.png" alt="" />
+          <div className='relative flex ml-auto items-end justify-center flex-col gap-[17px] w-1/2 h-full'>
+            <div className='relative z-20 h-100 min-w-[500px] mr-[34px] rounded-[15px] overflow-hidden flex items-center justify-end'>
+              {heroImages.map((img, i) => (
+                <img
+                  key={img}
+                  src={img}
+                  alt=""
+                  className={`absolute inset-0 h-full  object-cover rounded-[15px] transition-opacity duration-700 ease-in-out ${i === heroIndex ? 'opacity-100' : 'opacity-0'}`}
+                />
+              ))}
+            </div>
+            
+            <div className="flex absolute h-full w-full items-center">
+              <div className="h-[50%] flex-1"></div>
+              <div className="h-[470px] bg-(--color-primary) w-[60%] rounded-[50px] "></div>
+            </div>
+
           </div>
         </div>
       </div>
 
       {/* services */}
-      <div className='min-h-dvh py-50 flex flex-col items-center justify-center mx-[100px]'>
-        <h1 className='heading mb-[13px]'>Complete Compliance Solution</h1>
-        <p className='para text-center mb-[45px] max-w-4xl' style={{fontSize: "19px"}}>From company registration to GST filing, income tax returns to trademark protection — we handle all your compliance needs in one place.</p>
-        {/* services cards */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 w-full ">
-          {servicesData.map((service, index) => (
-            <div key={index} className="flex flex-col p-8 bg-white rounded-[24px] border border-gray-200 hover:-translate-y-2 hover:shadow-[0_8px_64px_rgba(47,164,169,0.25)] transition-all duration-300 cursor-pointer">
-              <div className={`mb-5 ${service.iconColor}`}>
-                <service.icon size={26} strokeWidth={1.75} />
+      <div className="px-25 flex items-center justify-center w-full">
+
+        <div className='min-h-dvh py-50 flex flex-col items-center justify-center mx-25 max-w-360 mx-auto'>
+          <h1 className='heading mb-[13px] text-center'>Complete Compliance Solution</h1>
+          <p className='para text-center mb-[45px] max-w-4xl' style={{fontSize: "19px"}}>From company registration to GST filing, income tax returns to trademark protection — we handle all your compliance needs in one place.</p>
+          {/* services cards */}
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 w-full ">
+            {servicesData.map((service, index) => (
+              <div key={index} className="flex flex-col p-8 bg-white rounded-[24px] border border-gray-200 hover:-translate-y-2 hover:shadow-[0_8px_64px_rgba(47,164,169,0.25)] transition-all duration-300 cursor-pointer">
+                <div className={`mb-5 ${service.iconColor}`}>
+                  <service.icon size={26} strokeWidth={1.75} />
+                </div>
+                <h3 className="text-[19px] font-semibold text-[#1a1a1a] mb-3">{service.title}</h3>
+                <p className="text-[#666666] text-[15px] leading-relaxed mb-8 grow">{service.desc}</p>
+                <Link to="/" className="flex items-center gap-2 text-[15px] font-semibold text-[#1a1a1a] hover:opacity-75 transition-opacity mt-auto">
+                  Learn more <ArrowRight size={18} strokeWidth={2.5} className={service.arrowColor} />
+                </Link>
               </div>
-              <h3 className="text-[19px] font-semibold text-[#1a1a1a] mb-3">{service.title}</h3>
-              <p className="text-[#666666] text-[15px] leading-relaxed mb-8 flex-grow">{service.desc}</p>
-              <Link to="/" className="flex items-center gap-2 text-[15px] font-semibold text-[#1a1a1a] hover:opacity-75 transition-opacity mt-auto">
-                Learn more <ArrowRight size={18} strokeWidth={2.5} className={service.arrowColor} />
-              </Link>
-            </div>
-          ))}
+            ))}
+          </div>
+          <Link to="/services" className='group flex items-center gap-0 justify-center mt-10 '>View All Services <span className="inline-block w-0 overflow-hidden opacity-0 group-hover:w-5 group-hover:opacity-100 group-hover:ml-2 transition-all duration-300"><ArrowUpRight size={20} /></span></Link>
+
         </div>
-        <Link to="/services" className='group flex items-center gap-0 justify-center mt-10 '>View All Services <span className="inline-block w-0 overflow-hidden opacity-0 group-hover:w-5 group-hover:opacity-100 group-hover:ml-2 transition-all duration-300"><ArrowUpRight size={20} /></span></Link>
 
       </div>
 
       {/* steps */}
-      <div className="relative w-full bg-linear-to-br from-[#d4f0f0] via-[#e8f6f6] to-[#f8fcfc] py-24 mb-10 overflow-visible ">
-        <div className="flex flex-col md:flex-row gap-12 items-start relative mx-[100px] ">
+      <div className="relative w-full bg-linear-to-br from-[#d4f0f0] via-[#e8f6f6] to-[#f8fcfc] py-24 mb-10 overflow-visible flex items-center justify-center ">
+        <div className="flex flex-col md:flex-row gap-12 items-start relative mx-25 max-w-360">
           
           {/* Left Fixed Column */}
-          <div className="w-full md:w-2/5 sticky top-32 flex flex-col items-start gap-6 border-l border-[#e2e8f0]">
+          <div className="w-full md:w-1/2 sticky top-32 flex flex-col items-start gap-6">
             <h2 className="heading ">
               Start your<br/>Business in India
             </h2>
@@ -190,17 +226,17 @@ const Landing = () => {
           </div>
 
           {/* Right Scrolling Column */}
-          <div className="w-full md:w-3/5 flex flex-col gap-6">
+          <div className="w-full md:w-1/2 flex flex-col gap-6">
             {stepsData.map((step, index) => (
-              <div key={index} className="bg-white p-10 shadow-[0_4px_24px_rgba(0,0,0,0.03)] border border-gray-200 rounded-3xl flex items-center gap-6">
+              <div key={index} className=" flex flex-col bg-white p-10 shadow-[0_4px_24px_rgba(0,0,0,0.03)] border border-gray-200 rounded-3xl items-center gap-6">
+                <img src={step.img} alt={step.title} className="w-full h-auto object-cover shrink-0 rounded-2xl" />
                 <div className="flex-1">
                   <div className="heading" style={{color: "#cbd5e1"}}>{step.num}</div>
-                  <h3 className="text-[19px] text-[#2db3ab] mb-3 ">{step.title}</h3>
-                  <p className="text-[#475569] text-[15px] leading-[1.6]">
+                  <h3 className="heading mb-3 " style={{color: "#2db3ab", fontSize: "40px" }}>{step.title}</h3>
+                  <p className="text-[#475569] text-[19px] leading-[1.6]">
                     {step.desc}
                   </p>
                 </div>
-                <img src={step.img} alt={step.title} className="w-1/3 h-full object-contain flex-shrink-0" />
               </div>
             ))}
           </div>
@@ -214,7 +250,7 @@ const Landing = () => {
       {/* vendor registration */}
       <Partner />
 
-      {/* CTA */}
+      {/* cta */}
       <Cta />
 
     </>

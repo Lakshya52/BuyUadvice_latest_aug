@@ -3,8 +3,8 @@ import { Link } from 'react-router-dom'
 
 const Partner = () => {
   return (
-    <div className="relative h-[calc(80dvh-100px)] bg-[url('/BgEffects.svg')] bg-cover bg-no-repeat bg-center flex items-center justify-between w-full overflow-hidden">
-        <div className='flex items-center justify-between w-full mx-[100px] gap-[50px] pb-10' >
+    <div className="relative h-[calc(100dvh-100px)] bg-[url('/BgEffects.svg')] bg-cover bg-no-repeat bg-center flex items-center justify-center w-full overflow-hidden">
+        <div className='flex max-w-360 items-center justify-between w-full mx-25 gap-[50px] pb-10' >
           
           {/* partner left */}
           <div className='flex items-start flex-col gap-[17px] w-1/2'>

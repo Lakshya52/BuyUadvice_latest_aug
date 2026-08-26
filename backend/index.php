@@ -31,12 +31,17 @@ if ($uri[0] !== 'backend') {
 }
 
 $routes = [
-    'auth/register'   => __DIR__ . '/auth/register.php',
-    'auth/login'      => __DIR__ . '/auth/login.php',
-    'auth/logout'     => __DIR__ . '/auth/logout.php',
-    'auth/check'      => __DIR__ . '/auth/check.php',
-    'auth/google'     => __DIR__ . '/auth/google.php',
-    'auth/identifier' => __DIR__ . '/auth/identifier.php',
+    'auth/register'       => __DIR__ . '/auth/register.php',
+    'auth/login'          => __DIR__ . '/auth/login.php',
+    'auth/logout'         => __DIR__ . '/auth/logout.php',
+    'auth/check'          => __DIR__ . '/auth/check.php',
+    'auth/google'         => __DIR__ . '/auth/google.php',
+    'auth/identifier'     => __DIR__ . '/auth/identifier.php',
+    'auth/send-otp'       => __DIR__ . '/auth/send-otp.php',
+    'auth/verify-otp'     => __DIR__ . '/auth/verify-otp.php',
+    'auth/check-email'    => __DIR__ . '/auth/check-email.php',
+    'auth/login-password' => __DIR__ . '/auth/login-password.php',
+    'auth/set-password'   => __DIR__ . '/auth/set-password.php',
 ];
 
 $key = implode('/', array_slice($uri, 1));

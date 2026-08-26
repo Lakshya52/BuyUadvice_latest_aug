@@ -1,6 +1,6 @@
 <?php
 
-$envFile = __DIR__ . '/backend/.env';
+$envFile = __DIR__ . '/.env';
 if (file_exists($envFile)) {
     foreach (file($envFile, FILE_IGNORE_NEW_LINES | FILE_SKIP_EMPTY_LINES) as $line) {
         if (str_starts_with(trim($line), '#')) continue;
@@ -14,11 +14,11 @@ if (file_exists($envFile)) {
 $uri = parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH);
 
 if (str_starts_with($uri, '/backend/')) {
-    require __DIR__ . '/backend/index.php';
+    require __DIR__ . '/index.php';
     return true;
 }
 
-$filePath = __DIR__ . '/frontend/dist' . $uri;
+$filePath = __DIR__ . '/../frontend/dist' . $uri;
 
 if ($uri !== '/' && file_exists($filePath) && !is_dir($filePath)) {
     $mimeTypes = [
@@ -44,6 +44,6 @@ if ($uri !== '/' && file_exists($filePath) && !is_dir($filePath)) {
     return true;
 }
 
-header('Content-Type: ' . mime_content_type(__DIR__ . '/frontend/dist/index.html'));
-readfile(__DIR__ . '/frontend/dist/index.html');
+header('Content-Type: ' . mime_content_type(__DIR__ . '/../frontend/dist/index.html'));
+readfile(__DIR__ . '/../frontend/dist/index.html');
 return true;

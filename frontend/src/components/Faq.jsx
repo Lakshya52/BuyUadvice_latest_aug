@@ -52,41 +52,46 @@ const Faq = () => {
   };
 
   return (
-    <div className="w-full flex flex-col items-center py-24 px-[100px] overflow-hidden">
-      <h2 className="heading text-center mb-6">Frequently Asked Questions</h2>
-      
-      <div className="w-full flex flex-col gap-4">
-        {faqsData.map((faq, index) => {
-          const isOpen = openFaq === index;
-          return (  
-            <div 
-              key={index} 
-              className={`rounded-2xl border transition-all duration-300 ${isOpen ? 'border-[var(--color-accent)] shadow-[0_4px_24px_rgba(47,164,169,0.12)]' : 'border-gray-200 hover:border-gray-300'}`}
-            >
-              <button 
-                onClick={() => toggleFaq(index)}
-                className={`group w-full outline-none flex items-center justify-between p-6 md:p-8 text-left bg-white rounded-2xl transition-colors duration-300 ${isOpen ? '' : 'hover:bg-[var(--color-accent-light)] cursor-pointer'}`}
-              >
-                <span className={`text-[18px] font-semibold pr-8 transition-colors duration-300 ${isOpen ? 'text-[var(--color-accent)]' : 'text-[#1a1a1a] group-hover:text-[var(--color-primary)]'}`}>
-                  {faq.question}
-                </span>
-                <span className={`flex-shrink-0 transition-all duration-300 ${isOpen ? 'rotate-180 text-[var(--color-accent)]' : 'text-gray-400 group-hover:text-[var(--color-primary)]'}`}>
-                  <ChevronDown size={22} strokeWidth={2.5} />
-                </span>
-              </button>
-              
-              <div 
-                className={`overflow-hidden transition-all duration-300 ${isOpen ? 'max-h-[500px]' : 'max-h-0'}`}
-              >
-                <div className="px-8 pb-8 pt-0 text-[#475569] text-[16px] leading-[1.7]">
-                  {faq.answer}
+    <>
+      <div className='flex w-full items-center justify-center px-25'>
+        <div className="w-full flex flex-col items-center h-fit py-24 overflow-hidden max-w-360 mx-auto">
+          <h2 className="heading text-center mb-6">Frequently Asked Questions</h2>
+          
+          <div className="w-full flex flex-col gap-4">
+            {faqsData.map((faq, index) => {
+              const isOpen = openFaq === index;
+              return (  
+                <div 
+                  key={index} 
+                  className={`rounded-2xl border transition-all duration-300 ${isOpen ? 'border-(--color-accent) shadow-[0_4px_24px_rgba(47,164,169,0.12)]' : 'border-gray-200 hover:border-gray-300'}`}
+                >
+                  <button 
+                    onClick={() => toggleFaq(index)}
+                    className={`group w-full outline-none flex items-center justify-between p-6 md:p-8 text-left bg-white rounded-2xl transition-colors duration-300 ${isOpen ? '' : 'hover:bg-(--color-accent-light) cursor-pointer'}`}
+                  >
+                    <span className={`text-[18px] font-semibold pr-8 transition-colors duration-300 ${isOpen ? 'text-(--color-accent)' : 'text-[#1a1a1a] group-hover:text-(--color-primary)'}`}>
+                      {faq.question}
+                    </span>
+                    <span className={`shrink-0 transition-all duration-300 ${isOpen ? 'rotate-180 text-(--color-accent)' : 'text-gray-400 group-hover:text-(--color-primary)'}`}>
+                      <ChevronDown size={22} strokeWidth={2.5} />
+                    </span>
+                  </button>
+                  
+                  <div 
+                    className={`overflow-hidden transition-all duration-300 ${isOpen ? 'max-h-125' : 'max-h-0'}`}
+                  >
+                    <div className="px-8 pb-8 pt-0 text-[#475569] text-[16px] leading-[1.7]">
+                      {faq.answer}
+                    </div>
+                  </div>
                 </div>
-              </div>
-            </div>
-          );
-        })}
+              );
+            })}
+          </div>
+        </div>
+
       </div>
-    </div>
+    </>
   )
 }
 
