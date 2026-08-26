@@ -79,7 +79,7 @@ const Services = () => {
                   onClick={() => toggleCat(cat)}
                   className={`group w-full outline-none flex items-center justify-between p-8 text-left bg-white transition-colors duration-300 cursor-pointer border-l-4 ${isOpen ? 'border-l-(--color-primary)' : 'border-l-(--color-primary) hover:bg-(--color-accent-light)'}`}
                 >
-                  <span className={`heading  ${isOpen ? 'text-(--color-accent)' : 'text-[#1a1a1a] group-hover:text-(--color-primary) '}`} >
+                  <span className={`heading  ${isOpen ? 'text-(--color-accent)' : 'text-(--color-black) group-hover:text-(--color-primary) '}`} >
                     {categoryLabels[cat] || cat} <span className="text-[19px] font-normal text-gray-400 ml-2">({items.length})</span>
                   </span>
                   <span className={`shrink-0 transition-all duration-300 ${isOpen ? 'rotate-180 text-(--color-accent)' : 'text-gray-400 group-hover:text-(--color-primary)'}`}>
@@ -96,9 +96,9 @@ const Services = () => {
                           key={service.id}
                           className="flex flex-col p-8 bg-white rounded-3xl border border-gray-200 hover:-translate-y-2 hover:shadow-[0_8px_64px_rgba(47,164,169,0.25)] transition-all duration-300 cursor-pointer"
                         >
-                          <h3 className="text-[19px] font-semibold text-[#1a1a1a] mb-3">{service.title}</h3>
-                          <p className="text-[#666666] text-[15px] leading-relaxed mb-6 grow">{service.shortAbstract}</p>
-                          <span className="flex items-center gap-2 text-[15px] font-semibold text-[#1a1a1a]">
+                          <h3 className="text-[19px] font-semibold text-(--color-black) mb-3">{service.title}</h3>
+                          <p className="text-(--color-gray) text-[15px] leading-relaxed mb-6 grow">{service.shortAbstract}</p>
+                          <span className="flex items-center gap-2 text-[15px] font-semibold text-(--color-black)">
                             Learn more <ArrowUpRight size={18} strokeWidth={2.5} className="text-(--color-accent)" />
                           </span>
                         </Link>
@@ -110,7 +110,7 @@ const Services = () => {
             )
           })}
           {Object.keys(filtered).length === 0 && (
-            <p className="text-center text-[#666] text-[17px] py-10">No services found matching "{query}"</p>
+            <p className="text-center text-(--color-gray) text-[17px] py-10">No services found matching "{query}"</p>
           )}
         </div>
 

@@ -69,7 +69,7 @@ const Faq = () => {
                     onClick={() => toggleFaq(index)}
                     className={`group w-full outline-none flex items-center justify-between p-6 md:p-8 text-left bg-white rounded-2xl transition-colors duration-300 ${isOpen ? '' : 'hover:bg-(--color-accent-light) cursor-pointer'}`}
                   >
-                    <span className={`text-[18px] font-semibold pr-8 transition-colors duration-300 ${isOpen ? 'text-(--color-accent)' : 'text-[#1a1a1a] group-hover:text-(--color-primary)'}`}>
+                    <span className={`text-[18px] font-semibold pr-8 transition-colors duration-300 ${isOpen ? 'text-(--color-accent)' : 'text-(--color-black) group-hover:text-(--color-primary)'}`}>
                       {faq.question}
                     </span>
                     <span className={`shrink-0 transition-all duration-300 ${isOpen ? 'rotate-180 text-(--color-accent)' : 'text-gray-400 group-hover:text-(--color-primary)'}`}>
@@ -80,7 +80,7 @@ const Faq = () => {
                   <div 
                     className={`overflow-hidden transition-all duration-300 ${isOpen ? 'max-h-125' : 'max-h-0'}`}
                   >
-                    <div className="px-8 pb-8 pt-0 text-[#475569] text-[16px] leading-[1.7]">
+                    <div className="px-8 pb-8 pt-0 text-(--color-gray) text-[16px] leading-[1.7]">
                       {faq.answer}
                     </div>
                   </div>

@@ -32,7 +32,7 @@ const Cta = () => {
                 Contact Us
               </button>
             </Link>
-            <button onClick={openLogin} className="w-full sm:w-auto px-8 py-3.5 rounded-md bg-[#31a6a9] hover:bg-[#288f91] text-white font-medium transition-colors text-[16px]">
+            <button onClick={openLogin} className="w-full sm:w-auto px-8 py-3.5 rounded-md bg-(--color-accent-light) hover:bg-(--color-accent) text-white font-medium transition-colors text-[16px]">
               Get Started
             </button>
           </div>

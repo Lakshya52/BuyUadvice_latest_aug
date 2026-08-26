@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import { Link, useLocation } from 'react-router-dom'
 import { useAuth } from '../context/AuthContext'
+import { LogOut } from 'lucide-react';
 
 const navLinks = [
   { to: "/", label: "Home" },
@@ -16,8 +17,8 @@ const Navbar = () => {
   const [hidden, setHidden] = useState(false);
 
   useEffect(() => {
-    // if (!['/', '/about', '/services'].includes(pathname)) {
-    if (pathname !== '/') {
+    // if (pathname !== '/') {
+    if (!['/', '/about', '/services'].includes(pathname)) {
       setHidden(false);
       return;
     }
@@ -53,8 +54,11 @@ const Navbar = () => {
                   ))}
                   {user ? (
                     <div className='flex gap-4 items-center'>
-                      <Link to="/dashboard" className='btn-primary'>{user.name}</Link>
-                      <button onClick={logout} className='text-[15px] text-gray-500 hover:text-gray-800 cursor-pointer transition-colors'>Logout</button>
+                      {/* <Link to="/dashboard" className='btn-primary'>{user.name}</Link> */}
+                      <Link to="/dashboard" className='btn-primary'>Dashboard</Link>
+                      <button onClick={logout} className='text-[15px] text-gray-500 hover:text-gray-800 cursor-pointer transition-colors'>
+                        <LogOut />
+                      </button>
                     </div>
                   ) : (
                     <button onClick={openLogin} className='btn-primary'>Login</button>

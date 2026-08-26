@@ -3,9 +3,12 @@
 
 :root{
     --color-primary: #182B4F;
+    --color-primary-dark: #041430;
     --color-white: #F8F8F8;
     --color-black: #121212;
+    --color-gray: #475569;
     --color-accent: #2FA4A9;
+    --color-accent-dark: #087d81;
     --color-accent-light: #CFE9EC;
 }
 

@@ -14,6 +14,7 @@ const servicesData = [
     title: "Company Registration",
     desc: "Private Limited, LLP, OPC, and other business registrations with complete incorporation support.",
     arrowColor: "text-blue-500",
+    id: "private-limited-company-registration",
   },
   {
     icon: Receipt,
@@ -21,6 +22,7 @@ const servicesData = [
     title: "GST Registration",
     desc: "Complete GST registration support with documentation, application filing, and compliance guidance.",
     arrowColor: "text-green-500",
+    id: "gst-registration",
   },
   {
     icon: FileText,
@@ -28,6 +30,7 @@ const servicesData = [
     title: "GST Return Filing",
     desc: "Accurate GSTR-1, GSTR-3B, reconciliation, and regular GST return filing support.",
     arrowColor: "text-purple-500",
+    id: "gst-return-filing",
   },
   {
     icon: Landmark,
@@ -35,6 +38,7 @@ const servicesData = [
     title: "MCA Compliance",
     desc: "ROC annual filings, director KYC, company changes, and ongoing MCA compliance management.",
     arrowColor: "text-orange-500",
+    id: "company-compliance",
   },
   {
     icon: BadgeCheck,
@@ -42,6 +46,7 @@ const servicesData = [
     title: "Trademark Registration",
     desc: "Search, file, and protect your brand with end-to-end trademark registration support.",
     arrowColor: "text-red-500",
+    id: "trademark-registration",
   },
   {
     icon: Utensils,
@@ -49,6 +54,7 @@ const servicesData = [
     title: "FSSAI Registration",
     desc: "FSSAI registration and licensing support for food businesses with complete documentation assistance.",
     arrowColor: "text-teal-500",
+    id: "fssai-registration",
   },
   {
     icon: Rocket,
@@ -56,6 +62,7 @@ const servicesData = [
     title: "Startup India",
     desc: "Startup India registration and recognition support to help your business access government benefits.",
     arrowColor: "text-indigo-500",
+    id: "startup-india-registration",
   },
   {
     icon: Globe,
@@ -63,6 +70,7 @@ const servicesData = [
     title: "Foreign Accounting",
     desc: "Accounting and bookkeeping support for businesses dealing with international operations and transactions.",
     arrowColor: "text-cyan-500",
+    id: "business-plan",
   },
   {
     icon: Banknote,
@@ -70,6 +78,7 @@ const servicesData = [
     title: "Income Tax Filing",
     desc: "Individual and business ITR filing, tax compliance, and expert assistance for accurate returns.",
     arrowColor: "text-yellow-500",
+    id: "income-tax-e-filing",
   },
   {
     icon: Building2,
@@ -77,6 +86,7 @@ const servicesData = [
     title: "Udyam Registration",
     desc: "Quick Udyam MSME registration to establish your business and access eligible government benefits.",
     arrowColor: "text-emerald-500",
+    id: "udyam-registration",
   },
   {
     icon: Ship,
@@ -84,6 +94,7 @@ const servicesData = [
     title: "Import / Export Code",
     desc: "IEC registration support for businesses looking to start or expand international trade operations.",
     arrowColor: "text-sky-500",
+    id: "import-export-code",
   },
   {
     icon: FileCheck,
@@ -91,6 +102,7 @@ const servicesData = [
     title: "RCMC Registration",
     desc: "RCMC registration assistance to help exporters access trade benefits and industry-specific support.",
     arrowColor: "text-pink-500",
+    id: "rcmc-registration",
   },
 ];
 
@@ -190,16 +202,16 @@ const Landing = () => {
           {/* services cards */}
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 w-full ">
             {servicesData.map((service, index) => (
-              <div key={index} className="flex flex-col p-8 bg-white rounded-[24px] border border-gray-200 hover:-translate-y-2 hover:shadow-[0_8px_64px_rgba(47,164,169,0.25)] transition-all duration-300 cursor-pointer">
+              <Link to={`/services/${service.id}`} key={index} className="flex flex-col p-8 bg-white rounded-[24px] border border-gray-200 hover:-translate-y-2 hover:shadow-[0_8px_64px_rgba(47,164,169,0.25)] transition-all duration-300 cursor-pointer">
                 <div className={`mb-5 ${service.iconColor}`}>
                   <service.icon size={26} strokeWidth={1.75} />
                 </div>
-                <h3 className="text-[19px] font-semibold text-[#1a1a1a] mb-3">{service.title}</h3>
+                <h3 className="text-[19px] font-semibold text-(--color-black) mb-3">{service.title}</h3>
                 <p className="text-[#666666] text-[15px] leading-relaxed mb-8 grow">{service.desc}</p>
-                <Link to="/" className="flex items-center gap-2 text-[15px] font-semibold text-[#1a1a1a] hover:opacity-75 transition-opacity mt-auto">
+                <Link to={`/services/${service.id}`} className="flex items-center gap-2 text-[15px] font-semibold text-(--color-black) hover:opacity-75 transition-opacity mt-auto">
                   Learn more <ArrowRight size={18} strokeWidth={2.5} className={service.arrowColor} />
                 </Link>
-              </div>
+              </Link>
             ))}
           </div>
           <Link to="/services" className='group flex items-center gap-0 justify-center mt-10 '>View All Services <span className="inline-block w-0 overflow-hidden opacity-0 group-hover:w-5 group-hover:opacity-100 group-hover:ml-2 transition-all duration-300"><ArrowUpRight size={20} /></span></Link>
@@ -233,7 +245,7 @@ const Landing = () => {
                 <div className="flex-1">
                   <div className="heading" style={{color: "#cbd5e1"}}>{step.num}</div>
                   <h3 className="heading mb-3 " style={{color: "#2db3ab", fontSize: "40px" }}>{step.title}</h3>
-                  <p className="text-[#475569] text-[19px] leading-[1.6]">
+                  <p className="text-(--color-gray) text-[19px] leading-[1.6]">
                     {step.desc}
                   </p>
                 </div>

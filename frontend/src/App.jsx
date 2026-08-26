@@ -4,6 +4,7 @@ import Lenis from 'lenis'
 import { AuthProvider } from './context/AuthContext'
 import Landing from './pages/Landing'
 import Dashboard from './pages/Dashboard'
+import ServiceDetail from './pages/ServiceDetail'
 import Navbar from './components/Navbar'
 import Footer from './components/Footer'
 
@@ -59,6 +60,7 @@ const App = () => {
                 <Route path='/' element={<Landing />} />
                 <Route path='/about' element={<About />} />
                 <Route path='/services' element={<Services />} />
+                <Route path='/services/:id' element={<ServiceDetail />} />
                 <Route path='/partner' element={<Partner />} />
                 <Route path='/contact' element={<Contact />} />
                 <Route path='/terms' element={<Terms />} />
