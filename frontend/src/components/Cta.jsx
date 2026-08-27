@@ -28,11 +28,11 @@ const Cta = () => {
           </p>
           <div className="flex flex-col sm:flex-row gap-4 sm:gap-5 w-full sm:w-auto">
             <Link to="/contact">
-              <button className="w-full sm:w-auto px-8 py-3.5 rounded-md border border-[#cbd5e1] text-white font-medium hover:bg-white/10 transition-colors text-[16px]">
+              <button className="btn-border-white">
                 Contact Us
               </button>
             </Link>
-            <button onClick={openLogin} className="w-full sm:w-auto px-8 py-3.5 rounded-md bg-(--color-accent-light) hover:bg-(--color-accent) text-white font-medium transition-colors text-[16px]">
+            <button onClick={openLogin} className="btn-primary-accent">
               Get Started
             </button>
           </div>

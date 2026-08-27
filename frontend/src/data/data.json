@@ -3,6 +3,7 @@
     "registrations": [
       {
         "id": "startup-india-registration",
+        "icon": "Rocket",
         "price": 3847,
         "title": "Startup India Registration",
         "shortAbstract": "Get official DPIIT recognition for your startup and unlock government benefits, tax exemptions, and funding opportunities.",
@@ -28,6 +29,7 @@
       },
       {
         "id": "trade-license",
+        "icon": "Store",
         "price": 5621,
         "title": "Trade License",
         "shortAbstract": "Obtain a mandatory trade license to operate your business legally under local municipal laws.",
@@ -53,6 +55,7 @@
       },
       {
         "id": "fssai-registration",
+        "icon": "UtensilsCrossed",
         "price": 2734,
         "title": "FSSAI Registration",
         "shortAbstract": "Register your food business under FSSAI to comply with food safety regulations in India.",
@@ -77,6 +80,7 @@
       },
       {
         "id": "fssai-license",
+        "icon": "ChefHat",
         "price": 4156,
         "title": "FSSAI License",
         "shortAbstract": "Get an FSSAI license for medium and large food businesses operating across states.",
@@ -101,6 +105,7 @@
       },
       {
         "id": "halal-license-certification",
+        "icon": "ShieldCheck",
         "price": 6489,
         "title": "Halal License & Certification",
         "shortAbstract": "Certify your products as Halal and expand into global and faith-based markets.",
@@ -124,6 +129,7 @@
       },
       {
         "id": "icegate-registration",
+        "icon": "Ship",
         "price": 3214,
         "title": "ICEGATE Registration",
         "shortAbstract": "Register on the ICEGATE portal to access Indian Customs electronic services.",
@@ -147,6 +153,7 @@
       },
       {
         "id": "import-export-code",
+        "icon": "Globe",
         "price": 4765,
         "title": "Import Export Code",
         "shortAbstract": "Obtain an IEC to legally import or export goods and services from India.",
@@ -170,6 +177,7 @@
       },
       {
         "id": "legal-entity-identifier-code",
+        "icon": "Fingerprint",
         "price": 5892,
         "title": "Legal Entity Identifier Code",
         "shortAbstract": "Obtain an LEI code for financial transactions and regulatory compliance.",
@@ -192,6 +200,7 @@
       },
       {
         "id": "iso-registration",
+        "icon": "Award",
         "price": 7324,
         "title": "ISO Registration",
         "shortAbstract": "Improve business credibility with ISO certification for quality standards.",
@@ -215,6 +224,7 @@
       },
       {
         "id": "pf-registration",
+        "icon": "PiggyBank",
         "price": 2541,
         "title": "PF Registration",
         "shortAbstract": "Register under Provident Fund to comply with employee welfare laws.",
@@ -238,6 +248,7 @@
       },
       {
         "id": "esi-registration",
+        "icon": "HeartPulse",
         "price": 3678,
         "title": "ESI Registration",
         "shortAbstract": "Register under ESI to provide medical and insurance benefits to employees.",
@@ -261,6 +272,7 @@
       },
       {
         "id": "professional-tax-registration",
+        "icon": "Briefcase",
         "price": 4923,
         "title": "Professional Tax Registration",
         "shortAbstract": "Register under professional tax laws applicable to your state.",
@@ -284,6 +296,7 @@
       },
       {
         "id": "shop-act-registration",
+        "icon": "ShoppingBag",
         "price": 2856,
         "title": "Shop Act Registration",
         "shortAbstract": "Register your shop or establishment under local shop and establishment laws.",
@@ -307,6 +320,7 @@
       },
       {
         "id": "udyam-registration",
+        "icon": "Factory",
         "price": 5134,
         "title": "Udyam Registration",
         "shortAbstract": "Register your business as an MSME and access government benefits.",
@@ -330,6 +344,7 @@
       },
       {
         "id": "fire-license",
+        "icon": "Flame",
         "price": 3456,
         "title": "Fire License",
         "shortAbstract": "Obtain fire safety approval for commercial and industrial premises.",
@@ -353,6 +368,7 @@
       },
       {
         "id": "12a-registration",
+        "icon": "Heart",
         "price": 6745,
         "title": "12A Registration",
         "shortAbstract": "Obtain tax exemption status for charitable and non-profit organizations under Section 12A of the Income Tax Act.",
@@ -376,6 +392,7 @@
       },
       {
         "id": "certificate-of-incumbency",
+        "icon": "UserCheck",
         "price": 2189,
         "title": "Certificate of Incumbency",
         "shortAbstract": "Obtain official certificate confirming current office bearers and their authority to sign documents.",
@@ -398,6 +415,7 @@
       },
       {
         "id": "fcra-registration",
+        "icon": "Globe2",
         "price": 4567,
         "title": "FCRA Registration",
         "shortAbstract": "Register to receive foreign contributions as per the Foreign Contribution Regulation Act.",
@@ -421,6 +439,7 @@
       },
       {
         "id": "80g-registration",
+        "icon": "HeartHandshake",
         "price": 5678,
         "title": "80G Registration",
         "shortAbstract": "Get tax exemption status under Section 80G for eligible donations received by charitable organizations.",
@@ -444,6 +463,7 @@
       },
       {
         "id": "darpan-registration",
+        "icon": "Database",
         "price": 3321,
         "title": "DARPAN Registration",
         "shortAbstract": "Register your NGO on DARPAN portal for government schemes and benefits eligibility.",
@@ -467,6 +487,7 @@
       },
       {
         "id": "rcmc-registration",
+        "icon": "CircleDot",
         "price": 6234,
         "title": "RCMC Registration",
         "shortAbstract": "Register as Rubber Cored Merchant Exporter for rubber product exports.",
@@ -490,6 +511,7 @@
       },
       {
         "id": "apeda-registration",
+        "icon": "Sprout",
         "price": 4789,
         "title": "APEDA Registration",
         "shortAbstract": "Register as agricultural product exporter with Agricultural and Processed Food Products Export Development Authority.",
@@ -513,6 +535,7 @@
       },
       {
         "id": "digital-signature",
+        "icon": "KeyRound",
         "price": 2945,
         "title": "Digital Signature",
         "shortAbstract": "Obtain digital signature for legally valid electronic document signing.",
@@ -536,6 +559,7 @@
       },
       {
         "id": "tn-rera-registration-for-agents",
+        "icon": "Home",
         "price": 5456,
         "title": "TN RERA Registration for Agents",
         "shortAbstract": "Register as real estate agent under Tamil Nadu RERA for property sales and transactions.",
@@ -559,6 +583,7 @@
       },
       {
         "id": "barcode-registration",
+        "icon": "Barcode",
         "price": 3678,
         "title": "Barcode Registration",
         "shortAbstract": "Register products with unique barcodes for retail and supply chain management.",
@@ -582,6 +607,7 @@
       },
       {
         "id": "halal-license-and-certification",
+        "icon": "CheckCircle",
         "price": 6912,
         "title": "Halal License and Certification",
         "shortAbstract": "Certify products and services as Halal compliant for Islamic and international markets.",
@@ -605,6 +631,7 @@
       },
       {
         "id": "12a-and-80g-registration",
+        "icon": "CircleCheck",
         "price": 4234,
         "title": "12A and 80G Registration",
         "shortAbstract": "Combined registration enabling tax exemption for organizations and donor tax deduction benefits.",
@@ -628,6 +655,7 @@
       },
       {
         "id": "bis-registration",
+        "icon": "BadgeCheck",
         "price": 5789,
         "title": "BIS Registration",
         "shortAbstract": "Obtain Bureau of Indian Standards certification for product quality and safety compliance.",
@@ -653,6 +681,7 @@
     "trademark": [
       {
         "id": "trademark-registration",
+        "icon": "Tag",
         "price": 6543,
         "title": "Trademark Registration",
         "shortAbstract": "Protect your brand identity legally by registering your trademark in India.",
@@ -675,6 +704,7 @@
       },
       {
         "id": "trademark-objection",
+        "icon": "AlertCircle",
         "price": 2876,
         "title": "Trademark Objection",
         "shortAbstract": "Respond professionally to trademark objections raised by the examiner.",
@@ -697,6 +727,7 @@
       },
       {
         "id": "trademark-certificate",
+        "icon": "ScrollText",
         "price": 4321,
         "title": "Trademark Certificate",
         "shortAbstract": "Obtain your official trademark registration certificate.",
@@ -719,6 +750,7 @@
       },
       {
         "id": "trademark-opposition",
+        "icon": "ShieldAlert",
         "price": 5432,
         "title": "Trademark Opposition",
         "shortAbstract": "Legally oppose conflicting trademarks during publication stage.",
@@ -741,6 +773,7 @@
       },
       {
         "id": "trademark-hearing",
+        "icon": "Scale",
         "price": 3765,
         "title": "Trademark Hearing",
         "shortAbstract": "Professional representation for trademark hearings.",
@@ -763,6 +796,7 @@
       },
       {
         "id": "trademark-renewal",
+        "icon": "RefreshCw",
         "price": 4876,
         "title": "Trademark Renewal",
         "shortAbstract": "Renew your trademark and retain exclusive rights.",
@@ -785,6 +819,7 @@
       },
       {
         "id": "trademark-transfer",
+        "icon": "ArrowRightLeft",
         "price": 5987,
         "title": "Trademark Transfer",
         "shortAbstract": "Transfer trademark ownership legally.",
@@ -807,6 +842,7 @@
       },
       {
         "id": "trademark-rectification",
+        "icon": "Pencil",
         "price": 3098,
         "title": "Trademark Rectification",
         "shortAbstract": "Correct errors or omissions in registered trademark records.",
@@ -829,6 +865,7 @@
       },
       {
         "id": "design-registration",
+        "icon": "Palette",
         "price": 6234,
         "title": "Design Registration",
         "shortAbstract": "Register unique design for product aesthetic protection.",
@@ -851,6 +888,7 @@
       },
       {
         "id": "trademark-protection",
+        "icon": "Shield",
         "price": 4567,
         "title": "Trademark Protection",
         "shortAbstract": "Comprehensive services to protect and enforce your trademark rights.",
@@ -873,6 +911,7 @@
       },
       {
         "id": "tm-infringement-notice",
+        "icon": "FileWarning",
         "price": 2654,
         "title": "TM Infringement Notice",
         "shortAbstract": "Send legal notice against unauthorized trademark use.",
@@ -895,6 +934,7 @@
       },
       {
         "id": "design-objection",
+        "icon": "Paintbrush",
         "price": 5321,
         "title": "Design Objection",
         "shortAbstract": "Respond to objections raised against design registration.",
@@ -917,6 +957,7 @@
       },
       {
         "id": "expedited-tm-registration",
+        "icon": "Zap",
         "price": 6789,
         "title": "Expedited TM Registration",
         "shortAbstract": "Fast-track trademark registration process for urgent protection.",
@@ -940,6 +981,7 @@
       },
       {
         "id": "copyright-registration",
+        "icon": "Copyright",
         "price": 3456,
         "title": "Copyright Registration",
         "shortAbstract": "Register original creative works for legal copyright protection.",
@@ -961,6 +1003,7 @@
       },
       {
         "id": "copyright-objection",
+        "icon": "MessageSquareWarning",
         "price": 4567,
         "title": "Copyright Objection",
         "shortAbstract": "Respond to objections in copyright registration process.",
@@ -982,6 +1025,7 @@
       },
       {
         "id": "logo-designing",
+        "icon": "PenTool",
         "price": 5678,
         "title": "Logo Designing",
         "shortAbstract": "Professional logo design services for brand identity creation.",
@@ -1004,6 +1048,7 @@
       },
       {
         "id": "patent-registration",
+        "icon": "Lightbulb",
         "price": 6890,
         "title": "Patent Registration",
         "shortAbstract": "Register inventions for exclusive intellectual property protection.",
@@ -1028,6 +1073,7 @@
     "gst": [
       {
         "id": "gst-registration",
+        "icon": "ClipboardList",
         "price": 2345,
         "title": "GST Registration",
         "shortAbstract": "Get your business registered under GST quickly and compliantly with expert assistance.",
@@ -1045,6 +1091,7 @@
       },
       {
         "id": "gst-return-filing",
+        "icon": "FileText",
         "price": 3456,
         "title": "GST Return Filing",
         "shortAbstract": "Professional GST return filing handled by experienced accountants to avoid penalties.",
@@ -1061,6 +1108,7 @@
       },
       {
         "id": "gst-nil-return-filing",
+        "icon": "FileX",
         "price": 4567,
         "title": "GST NIL Return Filing",
         "shortAbstract": "File NIL GST returns effortlessly even when there are no business transactions.",
@@ -1075,6 +1123,7 @@
       },
       {
         "id": "gst-e-invoicing-software",
+        "icon": "Receipt",
         "price": 5678,
         "title": "GST E-Invoicing Software",
         "shortAbstract": "Automate invoice generation and IRN compliance with GST e-invoicing software.",
@@ -1092,6 +1141,7 @@
       },
       {
         "id": "gst-lut-form",
+        "icon": "FileOutput",
         "price": 2109,
         "title": "GST LUT Form",
         "shortAbstract": "Export goods or services without paying IGST using LUT filing.",
@@ -1108,6 +1158,7 @@
       },
       {
         "id": "gst-notice",
+        "icon": "AlertTriangle",
         "price": 3210,
         "title": "GST Notice",
         "shortAbstract": "Expert assistance to respond to GST notices accurately and on time.",
@@ -1125,6 +1176,7 @@
       },
       {
         "id": "gst-annual-return-filing-gstr-9",
+        "icon": "CalendarCheck",
         "price": 4321,
         "title": "GST Annual Return Filing (GSTR-9)",
         "shortAbstract": "Comprehensive annual GST return filing for financial year closure.",
@@ -1147,6 +1199,7 @@
       },
       {
         "id": "gstr-10",
+        "icon": "FileMinus",
         "price": 5432,
         "title": "GSTR-10",
         "shortAbstract": "Final GST return filing for business closure or deregistration.",
@@ -1169,6 +1222,7 @@
       },
       {
         "id": "gst-registration-for-foreigners",
+        "icon": "Plane",
         "price": 6543,
         "title": "GST Registration for Foreigners",
         "shortAbstract": "GST registration assistance for foreign entities operating in India.",
@@ -1192,6 +1246,7 @@
       },
       {
         "id": "gst-software-for-accountants",
+        "icon": "Calculator",
         "price": 3765,
         "title": "GST Software for Accountants",
         "shortAbstract": "Specialized GST software solutions for accounting professionals.",
@@ -1215,6 +1270,7 @@
       },
       {
         "id": "gst-invoicing-and-filing-software",
+        "icon": "FileStack",
         "price": 4876,
         "title": "GST Invoicing and Filing Software",
         "shortAbstract": "Integrated software for GST invoice generation and return filing.",
@@ -1239,6 +1295,7 @@
       },
       {
         "id": "virtual-office-gstin",
+        "icon": "Building",
         "price": 2654,
         "title": "Virtual Office GSTIN",
         "shortAbstract": "GST registration using virtual office address for business flexibility.",
@@ -1262,6 +1319,7 @@
       },
       {
         "id": "gst-amendment",
+        "icon": "PenLine",
         "price": 1499,
         "title": "GST Amendment",
         "shortAbstract": "Update your GST registration details with tax authorities.",
@@ -1283,6 +1341,7 @@
       },
       {
         "id": "gst-revocation",
+        "icon": "RotateCcw",
         "price": 2499,
         "title": "GST Revocation",
         "shortAbstract": "Apply for revocation of cancelled GST registration.",
@@ -1308,6 +1367,7 @@
     "income-tax": [
       {
         "id": "income-tax-e-filing",
+        "icon": "Laptop",
         "price": 3987,
         "title": "Income Tax E-Filing",
         "shortAbstract": "Online income tax return filing with expert guidance and support.",
@@ -1333,6 +1393,7 @@
       },
       {
         "id": "business-tax-filing",
+        "icon": "Building2",
         "price": 5098,
         "title": "Business Tax Filing",
         "shortAbstract": "Comprehensive income tax return filing for all business entities.",
@@ -1356,6 +1417,7 @@
       },
       {
         "id": "partnership-firm-llp-itr",
+        "icon": "Users",
         "price": 6209,
         "title": "Partnership Firm / LLP ITR",
         "shortAbstract": "Specialized ITR filing for partnership firms and Limited Liability Partnerships.",
@@ -1380,6 +1442,7 @@
       },
       {
         "id": "company-itr-filing",
+        "icon": "Factory",
         "price": 4320,
         "title": "Company ITR Filing",
         "shortAbstract": "Complete income tax return filing for companies with audit support.",
@@ -1403,6 +1466,7 @@
       },
       {
         "id": "15ca-15cb-filing",
+        "icon": "Send",
         "price": 5431,
         "title": "15CA - 15CB Filing",
         "shortAbstract": "Certified filing for foreign remittances and foreign payments.",
@@ -1426,6 +1490,7 @@
       },
       {
         "id": "trust-ngo-tax-filing",
+        "icon": "BookMarked",
         "price": 2876,
         "title": "Trust / NGO Tax Filing",
         "shortAbstract": "Specialized tax filing for trusts, NGOs, and charitable organizations.",
@@ -1449,6 +1514,7 @@
       },
       {
         "id": "tan-registration",
+        "icon": "Hash",
         "price": 3987,
         "title": "TAN Registration",
         "shortAbstract": "Apply for Tax Deduction Account Number for TDS filing.",
@@ -1472,6 +1538,7 @@
       },
       {
         "id": "income-tax-notice",
+        "icon": "Bell",
         "price": 5098,
         "title": "Income Tax Notice",
         "shortAbstract": "Professional assistance in responding to income tax notices.",
@@ -1496,6 +1563,7 @@
       },
       {
         "id": "tds-return-filing",
+        "icon": "FileCheck",
         "price": 6209,
         "title": "TDS Return Filing",
         "shortAbstract": "Accurate TDS return filing to report tax deductions and deposits.",
@@ -1519,6 +1587,7 @@
       },
       {
         "id": "revised-itr-return-itr-u",
+        "icon": "Undo2",
         "price": 3456,
         "title": "Revised ITR Return (ITR-U)",
         "shortAbstract": "Correct or update previously filed income tax returns.",
@@ -1544,6 +1613,7 @@
     "mca": [
       {
         "id": "company-compliance",
+        "icon": "ClipboardCheck",
         "price": 4567,
         "title": "Company Compliance",
         "shortAbstract": "Ensure annual and event-based MCA compliances are met accurately and on time.",
@@ -1567,6 +1637,7 @@
       },
       {
         "id": "llp-compliance",
+        "icon": "ListChecks",
         "price": 5678,
         "title": "LLP Compliance",
         "shortAbstract": "Complete compliance management for Limited Liability Partnerships.",
@@ -1590,6 +1661,7 @@
       },
       {
         "id": "opc-compliance",
+        "icon": "UserCircle",
         "price": 2789,
         "title": "OPC Compliance",
         "shortAbstract": "Simplified compliance solutions for One Person Companies.",
@@ -1612,6 +1684,7 @@
       },
       {
         "id": "name-change-company",
+        "icon": "Type",
         "price": 3890,
         "title": "Name Change - Company",
         "shortAbstract": "Change your company name legally with MCA approval.",
@@ -1634,6 +1707,7 @@
       },
       {
         "id": "registered-office-change",
+        "icon": "MapPin",
         "price": 5001,
         "title": "Registered Office Change",
         "shortAbstract": "Update your company's registered office address seamlessly.",
@@ -1656,6 +1730,7 @@
       },
       {
         "id": "din-ekyc-filing",
+        "icon": "ScanFace",
         "price": 6112,
         "title": "DIN eKYC Filing",
         "shortAbstract": "Mandatory annual KYC filing for directors holding DIN.",
@@ -1679,6 +1754,7 @@
       },
       {
         "id": "din-reactivation",
+        "icon": "Power",
         "price": 2223,
         "title": "DIN Reactivation",
         "shortAbstract": "Reactivate deactivated DINs quickly and legally.",
@@ -1702,6 +1778,7 @@
       },
       {
         "id": "director-change",
+        "icon": "UserPlus",
         "price": 4334,
         "title": "Director Change",
         "shortAbstract": "Add or change directors with proper MCA filings.",
@@ -1725,6 +1802,7 @@
       },
       {
         "id": "remove-director",
+        "icon": "UserMinus",
         "price": 5445,
         "title": "Remove Director",
         "shortAbstract": "Legally remove a director as per Companies Act.",
@@ -1747,6 +1825,7 @@
       },
       {
         "id": "adt-1-filing",
+        "icon": "Search",
         "price": 6556,
         "title": "ADT-1 Filing",
         "shortAbstract": "File auditor appointment with MCA.",
@@ -1770,6 +1849,7 @@
       },
       {
         "id": "dpt-3-filing",
+        "icon": "Landmark",
         "price": 2667,
         "title": "DPT-3 Filing",
         "shortAbstract": "Annual return of deposits and exempted loans.",
@@ -1793,6 +1873,7 @@
       },
       {
         "id": "llp-form-11-filing",
+        "icon": "FileSpreadsheet",
         "price": 3778,
         "title": "LLP Form 11 Filing",
         "shortAbstract": "Annual return filing for LLPs with comprehensive partner and financial details.",
@@ -1815,6 +1896,7 @@
       },
       {
         "id": "dormant-status-filing",
+        "icon": "Moon",
         "price": 4999,
         "title": "Dormant Status Filing",
         "shortAbstract": "Apply for dormant status for your inactive company to reduce compliance burden.",
@@ -1837,6 +1919,7 @@
       },
       {
         "id": "moa-amendment",
+        "icon": "FileEdit",
         "price": 2999,
         "title": "MOA Amendment",
         "shortAbstract": "Update your Company's Memorandum of Association to reflect business changes.",
@@ -1859,6 +1942,7 @@
       },
       {
         "id": "aoa-amendment",
+        "icon": "FileCog",
         "price": 2999,
         "title": "AOA Amendment",
         "shortAbstract": "Update your Company's Articles of Association for internal governance changes.",
@@ -1880,6 +1964,7 @@
       },
       {
         "id": "share-transfer",
+        "icon": "ArrowLeftRight",
         "price": 3499,
         "title": "Share Transfer",
         "shortAbstract": "Legal process for transferring shares between shareholders in a private company.",
@@ -1902,6 +1987,7 @@
       },
       {
         "id": "demat-of-shares",
+        "icon": "CreditCard",
         "price": 5999,
         "title": "Demat of Shares",
         "shortAbstract": "Convert your physical share certificates into electronic form.",
@@ -1924,6 +2010,7 @@
       },
       {
         "id": "authorized-capital-increase",
+        "icon": "TrendingUp",
         "price": 4499,
         "title": "Authorized Capital Increase",
         "shortAbstract": "Increase your company's authorized share capital to enable further investment.",
@@ -1946,6 +2033,7 @@
       },
       {
         "id": "winding-up-company",
+        "icon": "XCircle",
         "price": 14999,
         "title": "Winding Up - Company",
         "shortAbstract": "Legal process to formally close and dissolve your company.",
@@ -1969,6 +2057,7 @@
       },
       {
         "id": "commencement-inc-20a",
+        "icon": "Play",
         "price": 1999,
         "title": "Commencement (INC-20A)",
         "shortAbstract": "Mandatory filing before starting business operations or exercising borrowing powers.",
@@ -1991,6 +2080,7 @@
       },
       {
         "id": "winding-up-llp",
+        "icon": "LogOut",
         "price": 9999,
         "title": "Winding Up - LLP",
         "shortAbstract": "Formally close your Limited Liability Partnership with the MCA.",
@@ -2017,6 +2107,7 @@
     "compliance": [
       {
         "id": "fdi-filing-with-rbi",
+        "icon": "Banknote",
         "price": 4889,
         "title": "FDI Filing with RBI",
         "shortAbstract": "Ensure foreign investment compliance with RBI.",
@@ -2039,6 +2130,7 @@
       },
       {
         "id": "fla-return-filing",
+        "icon": "BarChart3",
         "price": 5990,
         "title": "FLA Return Filing",
         "shortAbstract": "Annual foreign asset reporting to RBI.",
@@ -2061,6 +2153,7 @@
       },
       {
         "id": "fssai-renewal",
+        "icon": "Timer",
         "price": 2101,
         "title": "FSSAI Renewal",
         "shortAbstract": "Renew your FSSAI license on time.",
@@ -2084,6 +2177,7 @@
       },
       {
         "id": "fssai-return-filing",
+        "icon": "ListTodo",
         "price": 3212,
         "title": "FSSAI Return Filing",
         "shortAbstract": "Annual return filing for food businesses.",
@@ -2106,6 +2200,7 @@
       },
       {
         "id": "business-plan",
+        "icon": "Target",
         "price": 4323,
         "title": "Business Plan",
         "shortAbstract": "Professional business plans for funding and growth.",
@@ -2128,6 +2223,7 @@
       },
       {
         "id": "hr-and-payroll",
+        "icon": "UsersRound",
         "price": 5434,
         "title": "HR and Payroll",
         "shortAbstract": "Complete HR and payroll management with statutory compliance and employee benefits.",
@@ -2152,6 +2248,7 @@
       },
       {
         "id": "professional-tax-return-filing",
+        "icon": "TableProperties",
         "price": 6545,
         "title": "Professional Tax Return Filing",
         "shortAbstract": "State-level professional tax compliance and return filing services.",
@@ -2175,6 +2272,7 @@
       },
       {
         "id": "proprietorship-compliance",
+        "icon": "User",
         "price": 2499,
         "title": "Proprietorship Compliance",
         "shortAbstract": "Manage annual compliance for your sole proprietorship business.",
@@ -2197,6 +2295,7 @@
       },
       {
         "id": "partnership-compliance",
+        "icon": "Handshake",
         "price": 3999,
         "title": "Partnership Compliance",
         "shortAbstract": "Ensure statutory compliance for your partnership firm.",
@@ -2221,6 +2320,7 @@
     "foreign-accounting": [
       {
         "id": "uae-company-formation",
+        "icon": "Plane",
         "price": 7656,
         "title": "UAE Company Formation",
         "shortAbstract": "Start your business in the UAE with ease.",
@@ -2244,6 +2344,7 @@
       },
       {
         "id": "usa-company-formation",
+        "icon": "Flag",
         "price": 3767,
         "title": "USA Company Formation",
         "shortAbstract": "Incorporate your company in the USA remotely.",
@@ -2267,6 +2368,7 @@
       },
       {
         "id": "singapore-company-formation",
+        "icon": "Compass",
         "price": 4878,
         "title": "Singapore Company Formation",
         "shortAbstract": "Launch your company in Singapore efficiently.",
@@ -2290,6 +2392,7 @@
       },
       {
         "id": "uk-company-formation",
+        "icon": "Castle",
         "price": 5989,
         "title": "UK Company Formation",
         "shortAbstract": "Register your company in the UK seamlessly.",
@@ -2313,6 +2416,7 @@
       },
       {
         "id": "usa-trademark-registration",
+        "icon": "ShieldCheck",
         "price": 2890,
         "title": "USA Trademark Registration",
         "shortAbstract": "Comprehensive trademark registration services for US market protection under USPTO.",
@@ -2336,6 +2440,7 @@
       },
       {
         "id": "international-trademark",
+        "icon": "Globe",
         "price": 6901,
         "title": "International Trademark",
         "shortAbstract": "Protect your brand globally.",
@@ -2359,6 +2464,7 @@
       },
       {
         "id": "uae-ecommerce-license",
+        "icon": "ShoppingCart",
         "price": 4012,
         "title": "UAE eCommerce License",
         "shortAbstract": "Launch your eCommerce business in UAE.",
@@ -2382,6 +2488,7 @@
       },
       {
         "id": "uae-embassy-attestation",
+        "icon": "Stamp",
         "price": 5123,
         "title": "UAE Embassy Attestation",
         "shortAbstract": "Authenticate documents for UAE use.",
@@ -2404,6 +2511,7 @@
       },
       {
         "id": "ajman-free-zone-company",
+        "icon": "Warehouse",
         "price": 6234,
         "title": "Ajman Free Zone Company",
         "shortAbstract": "Affordable free zone company formation.",
@@ -2427,6 +2535,7 @@
       },
       {
         "id": "uaq-free-zone-company",
+        "icon": "Package",
         "price": 3345,
         "title": "UAQ Free Zone Company",
         "shortAbstract": "Flexible business setup in UAQ free zone.",
@@ -2452,6 +2561,7 @@
     "startup": [
       {
         "id": "proprietorship",
+        "icon": "User",
         "price": 1999,
         "title": "Proprietorship",
         "shortAbstract": "Easiest way to start a business as a single owner with minimal compliance.",
@@ -2476,6 +2586,7 @@
       },
       {
         "id": "partnership",
+        "icon": "Handshake",
         "price": 3499,
         "title": "Partnership",
         "shortAbstract": "Register your partnership firm and define clear terms between business partners.",
@@ -2500,6 +2611,7 @@
       },
       {
         "id": "one-person-company",
+        "icon": "UserCheck",
         "price": 8999,
         "title": "One Person Company",
         "shortAbstract": "Enjoy the benefits of a corporate entity as a single founder with limited liability.",
@@ -2523,6 +2635,7 @@
       },
       {
         "id": "limited-liability-partnership",
+        "icon": "Shield",
         "price": 7499,
         "title": "Limited Liability Partnership",
         "shortAbstract": "Combine the flexibility of a partnership with the limited liability of a company.",
@@ -2546,6 +2659,7 @@
       },
       {
         "id": "private-limited-company",
+        "icon": "Building2",
         "price": 12999,
         "title": "Private Limited Company",
         "shortAbstract": "The most preferred structure for startups seeking external funding and rapid growth.",
@@ -2571,6 +2685,7 @@
       },
       {
         "id": "section-8-company",
+        "icon": "Heart",
         "price": 14999,
         "title": "Section 8 Company",
         "shortAbstract": "Form a non-profit organization with a corporate structure for charitable purposes.",

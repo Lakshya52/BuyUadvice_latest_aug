@@ -51,7 +51,7 @@ const Footer = () => {
   ];
 
   return (
-    <footer className="w-full bg-(--color-gray) text-(--color-primary) px-6 md:px-25 pt-16 pb-8">
+    <footer className="w-full bg-(--color-accent-light) text-(--color-primary) px-6 md:px-25 pt-16 pb-8">
       <div className="max-w-360 mx-auto">
         {/* Top Section */}
         <div className="grid grid-cols-1 md:grid-cols-12 gap-8 md:gap-12 pb-12">
@@ -108,7 +108,7 @@ const Footer = () => {
                 key={index}
                 href={social.href}
                 aria-label={social.label}
-                className="w-10 h-10 rounded-full bg-white flex items-center justify-center text-(--color-primary) hover:bg-(--color-primary) hover:text-white hover:shadow-md transition-all duration-300 transform hover:-translate-y-1"
+                className="w-10 h-10 rounded-full  flex items-center justify-center text-(--color-primary) hover:bg-(--color-primary) hover:text-white hover:shadow-md transition-all duration-300 transform hover:-translate-y-1"
               >
                 {social.svg}
               </a>

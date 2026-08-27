@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useRef } from 'react'
 import gsap from 'gsap'
 import { Link } from "react-router-dom"
 import { Building2, Receipt, Landmark, Banknote, BadgeCheck, ArrowRight, FileText, Utensils, Rocket, Globe, Ship, FileCheck, ArrowUpRight, Bold, Plus, Minus } from 'lucide-react'
@@ -140,11 +140,12 @@ const heroImages = [
   '/heroimages/Hero1.jpg',
   '/heroimages/Hero4.jpg',
   '/heroimages/Hero3.jpg',
-]
+];
 
 const Landing = () => {
   const { openLogin } = useAuth();
   const [heroIndex, setHeroIndex] = useState(0);
+  const glowRef = useRef(null);
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -152,12 +153,31 @@ const Landing = () => {
     }, 2000);
     return () => clearInterval(interval);
   }, []);
+
+  const handleHeroMouseMove = (e) => {
+    const rect = e.currentTarget.getBoundingClientRect();
+    const x = e.clientX - rect.left;
+    const y = e.clientY - rect.top;
+    gsap.to(glowRef.current, {
+      '--glow-x': `${x}px`,
+      '--glow-y': `${y}px`,
+      duration: 0.6,
+      ease: 'power2.out',
+    });
+  };
   
   return (
     <>
       {/* hero */}
-      <div className="relative h-[calc(100dvh-100px)] bg-[url('/BgEffects.svg')] bg-cover bg-no-repeat bg-center flex items-center justify-center w-full overflow-hidden">
-        <div className='flex items-center justify-between w-full mx-25 gap-[50px] pb-10 max-w-360 h-full' >
+      <div
+        className="relative h-[calc(100dvh-100px)] bg-[url('/BgEffects.svg')] bg-cover bg-no-repeat bg-center flex items-center justify-center w-full overflow-hidden"
+        onMouseMove={handleHeroMouseMove}
+        onMouseEnter={() => gsap.to(glowRef.current, { opacity: 1, duration: 0.4 })}
+        onMouseLeave={() => gsap.to(glowRef.current, { opacity: 0, duration: 0.4 })}
+      >
+        
+        {/* hero main contents */}
+        <div className='flex items-center justify-between w-full mx-25 gap-[50px] pb-10 max-w-360 h-full z-10' >
           
           {/* hero left */}
           <div className='flex items-start flex-col gap-[17px] w-1/2'>
@@ -191,6 +211,19 @@ const Landing = () => {
 
           </div>
         </div>
+
+        {/* hero hover effect */}
+        <div
+          ref={glowRef}
+          className="absolute inset-0 pointer-events-none"
+          style={{
+            opacity: 0,
+            '--glow-x': '0px',
+            '--glow-y': '0px',
+            background: 'radial-gradient(500px circle at var(--glow-x) var(--glow-y), var(--color-accent-light), transparent 60%)',
+          }}
+        />
+
       </div>
 
       {/* services */}
@@ -202,7 +235,8 @@ const Landing = () => {
           {/* services cards */}
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 w-full ">
             {servicesData.map((service, index) => (
-              <Link to={`/services/${service.id}`} key={index} className="flex flex-col p-8 bg-white rounded-[24px] border border-gray-200 hover:-translate-y-2 hover:shadow-[0_8px_64px_rgba(47,164,169,0.25)] transition-all duration-300 cursor-pointer">
+              <Link to={`/services/${service.id}`} key={index} className="group relative flex flex-col p-8 bg-white rounded-[24px] border border-gray-200 hover:-translate-y-2 hover:shadow-[0_8px_64px_rgba(47,164,169,0.25)] transition-all duration-300 cursor-pointer overflow-hidden">
+                <div className="shine-bar"></div>
                 <div className={`mb-5 ${service.iconColor}`}>
                   <service.icon size={26} strokeWidth={1.75} />
                 </div>

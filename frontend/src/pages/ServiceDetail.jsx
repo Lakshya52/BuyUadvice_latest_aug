@@ -1,9 +1,10 @@
 import React from 'react';
-import { useParams, useNavigate } from 'react-router-dom';
+import { useParams, useNavigate, Link } from 'react-router-dom';
 import { FileText, Check, ArrowRight, ArrowLeft, ShieldCheck, ClipboardList, CircleCheckBig } from 'lucide-react';
 import PageHeader from '../components/PageHeader';
 import { useAuth } from '../context/AuthContext';
 import data from '../data/data.json';
+import iconMap from '../data/iconMap';
 
 const ServiceDetail = () => {
   const { id } = useParams();
@@ -12,6 +13,13 @@ const ServiceDetail = () => {
 
   const allServices = Object.values(data.services).flat();
   const service = allServices.find(s => s.id === id);
+
+  const currentCategory = Object.keys(data.services).find(key =>
+    data.services[key].some(s => s.id === id)
+  );
+  const relatedServices = currentCategory
+    ? data.services[currentCategory].filter(s => s.id !== id).slice(0, 4)
+    : [];
 
   if (!service) {
     return (
@@ -47,24 +55,6 @@ const ServiceDetail = () => {
             Back to Services
           </button>
 
-          {/* Service Images */}
-          <div className="flex flex-col sm:flex-row gap-5 mb-14">
-            <div className="flex-[3] overflow-hidden rounded-3xl">
-              <img
-                src={`https://picsum.photos/seed/${service.id}-a/800/500`}
-                alt={service.title}
-                className="w-full h-full object-cover min-h-[280px] hover:scale-[1.02] transition-transform duration-500"
-              />
-            </div>
-            <div className="flex-[2] overflow-hidden rounded-3xl">
-              <img
-                src={`https://picsum.photos/seed/${service.id}-b/600/500`}
-                alt={`${service.title} - details`}
-                className="w-full h-full object-cover min-h-[280px] hover:scale-[1.02] transition-transform duration-500"
-              />
-            </div>
-          </div>
-
           {/* Two Column Layout */}
           <div className="flex flex-col lg:flex-row gap-12">
 
@@ -72,14 +62,29 @@ const ServiceDetail = () => {
             <div className="flex-1 min-w-0">
 
               {/* What is this service */}
-              <div className="mb-12">
+              <div className="mb-10">
                 <div className="flex items-center gap-3 mb-5">
-                  <div className="w-10 h-10 rounded-xl bg-(--color-primary) flex items-center justify-center">
-                    <CircleCheckBig size={20} className="text-white" />
-                  </div>
                   <h2 className="text-[26px] font-bold text-(--color-primary)">{service.heading1}</h2>
                 </div>
-                <p className="text-[16px] text-(--color-gray) leading-[1.85] pl-[52px]">{service.paragraph1}</p>
+                <p className="text-[16px] text-(--color-gray) leading-[1.85]">{service.paragraph1}</p>
+              </div>
+
+              {/* Service Images */}
+              <div className="flex flex-col sm:flex-row gap-5 mb-10">
+                <div className="flex-[3] overflow-hidden rounded-3xl">
+                  <img
+                    src={`https://picsum.photos/seed/${service.id}-a/800/500`}
+                    alt={service.title}
+                    className="w-full h-full object-cover min-h-[240px] hover:scale-[1.02] transition-transform duration-500"
+                  />
+                </div>
+                <div className="flex-[2] overflow-hidden rounded-3xl">
+                  <img
+                    src={`https://picsum.photos/seed/${service.id}-b/600/500`}
+                    alt={`${service.title} - details`}
+                    className="w-full h-full object-cover min-h-[240px] hover:scale-[1.02] transition-transform duration-500"
+                  />
+                </div>
               </div>
 
               {/* Bullets */}
@@ -104,34 +109,29 @@ const ServiceDetail = () => {
               {/* How we assist */}
               <div className="mb-12">
                 <div className="flex items-center gap-3 mb-5">
-                  <div className="w-10 h-10 rounded-xl bg-[var(--color-accent)] flex items-center justify-center">
+                  {/* <div className="w-10 h-10 rounded-xl bg-[var(--color-accent)] flex items-center justify-center">
                     <ShieldCheck size={20} className="text-white" />
-                  </div>
+                  </div> */}
                   <h2 className="text-[26px] font-bold text-(--color-primary)">{service.heading2}</h2>
                 </div>
-                <p className="text-[16px] text-(--color-gray) leading-[1.85] pl-[52px]">{service.paragraph2}</p>
+                <p className="text-[16px] text-(--color-gray) leading-[1.85]">{service.paragraph2}</p>
               </div>
 
               {/* Required Documents */}
               {service.documents && service.documents.length > 0 && (
                 <div className="mb-12">
                   <div className="flex items-center gap-3 mb-6">
-                    <div className="w-10 h-10 rounded-xl bg-[var(--color-primary)] flex items-center justify-center">
-                      <FileText size={20} className="text-white" />
-                    </div>
                     <h2 className="text-[24px] font-bold text-(--color-primary)">Required Documents</h2>
                   </div>
-                  <div className="bg-gray-50 border border-gray-100 rounded-3xl p-8">
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
-                      {service.documents.map((doc, i) => (
-                        <div key={i} className="flex items-center gap-3 bg-white rounded-xl px-5 py-4 border border-gray-100 hover:border-[var(--color-accent)]/30 hover:shadow-sm transition-all duration-200">
-                          <div className="w-7 h-7 rounded-lg bg-[var(--color-primary)] flex items-center justify-center shrink-0">
-                            <span className="text-white text-[11px] font-bold">{String(i + 1).padStart(2, '0')}</span>
-                          </div>
-                          <span className="text-[14px] text-[#333] font-medium">{doc}</span>
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                    {service.documents.map((doc, i) => (
+                      <div key={i} className="flex items-center gap-3 bg-linear-to-r from-(--color-accent-light) to-white rounded-2xl px-6 py-5 border border-(--color-accent)/10">
+                        <div className="w-9 h-9 rounded-full bg-(--color-accent) flex items-center justify-center shrink-0 shadow-sm">
+                          <span className="text-white text-[12px] font-bold">{i + 1}</span>
                         </div>
-                      ))}
-                    </div>
+                        <span className="text-[15px] font-semibold text-(--color-primary)">{doc}</span>
+                      </div>
+                    ))}
                   </div>
                 </div>
               )}
@@ -188,6 +188,36 @@ const ServiceDetail = () => {
             </div>
 
           </div>
+
+          {/* Related Services */}
+          {relatedServices.length > 0 && (
+            <div className="mt-20">
+              <div className="border-t border-gray-200 mb-12"></div>
+              <h2 className="text-[26px] font-bold text-(--color-primary) mb-8">Related Services</h2>
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+                {relatedServices.map((related) => (
+                  <Link
+                    key={related.id}
+                    to={`/services/${related.id}`}
+                    className="card-shine group flex flex-col p-6 bg-white rounded-[24px] border border-gray-200 hover:-translate-y-2 hover:shadow-[0_8px_64px_rgba(47,164,169,0.25)] transition-all duration-300 cursor-pointer overflow-hidden"
+                  >
+                    <div className="shine-bar"></div>
+                    <div className="mb-3 text-(--color-accent)">
+                      {iconMap[related.icon] ? React.createElement(iconMap[related.icon], { size: 24, strokeWidth: 1.75 }) : null}
+                    </div>
+                    <h3 className="text-[17px] font-bold text-(--color-primary) mb-2">{related.title}</h3>
+                    <p className="text-[13px] text-(--color-gray) leading-relaxed mb-5 line-clamp-3">{related.shortAbstract}</p>
+                    <div className="flex items-center gap-1 text-[14px] font-semibold text-(--color-accent) mt-auto group-hover:gap-2 transition-all duration-300">
+                      View Details <ArrowRight size={16} />
+                    </div>
+                  </Link>
+                ))}
+              </div>
+              <Link to="/services" className="group flex items-center gap-0 justify-center mt-8 text-[15px] font-semibold text-(--color-primary) hover:text-(--color-accent) transition-colors duration-300 cursor-pointer">
+                View All Services <span className="inline-block w-0 overflow-hidden opacity-0 group-hover:w-5 group-hover:opacity-100 group-hover:ml-2 transition-all duration-300"><ArrowRight size={18} /></span>
+              </Link>
+            </div>
+          )}
 
         </div>
       </div>

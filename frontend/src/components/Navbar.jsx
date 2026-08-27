@@ -18,7 +18,7 @@ const Navbar = () => {
 
   useEffect(() => {
     // if (pathname !== '/') {
-    if (!['/', '/about', '/services'].includes(pathname)) {
+    if (['/partner'].includes(pathname)) {
       setHidden(false);
       return;
     }

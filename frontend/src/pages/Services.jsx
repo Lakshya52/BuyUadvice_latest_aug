@@ -3,7 +3,9 @@ import { Link } from 'react-router-dom'
 import { Search, ArrowUpRight, ChevronDown } from 'lucide-react'
 import PageHeader from '../components/PageHeader'
 import data from '../data/data.json'
+import iconMap from '../data/iconMap'
 import Faq from '../components/Faq'
+import Cta from '../components/Cta'
 
 const categoryLabels = {
   registrations: 'Registrations & Licenses',
@@ -94,8 +96,12 @@ const Services = () => {
                         <Link
                           to={`/services/${service.id}`}
                           key={service.id}
-                          className="flex flex-col p-8 bg-white rounded-3xl border border-gray-200 hover:-translate-y-2 hover:shadow-[0_8px_64px_rgba(47,164,169,0.25)] transition-all duration-300 cursor-pointer"
+                          className="group relative flex flex-col p-8 bg-white rounded-3xl border border-gray-200 hover:-translate-y-2 hover:shadow-[0_8px_64px_rgba(47,164,169,0.25)] transition-all duration-300 cursor-pointer overflow-hidden"
                         >
+                          <div className="shine-bar"></div>
+                          <div className="mb-4 text-(--color-accent)">
+                            {iconMap[service.icon] ? React.createElement(iconMap[service.icon], { size: 26, strokeWidth: 1.75 }) : null}
+                          </div>
                           <h3 className="text-[19px] font-semibold text-(--color-black) mb-3">{service.title}</h3>
                           <p className="text-(--color-gray) text-[15px] leading-relaxed mb-6 grow">{service.shortAbstract}</p>
                           <span className="flex items-center gap-2 text-[15px] font-semibold text-(--color-black)">
@@ -118,6 +124,7 @@ const Services = () => {
       </div>
 
       <Faq />
+      <Cta />
     </>
   )
 }

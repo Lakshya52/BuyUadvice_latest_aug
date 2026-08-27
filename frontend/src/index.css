@@ -38,6 +38,20 @@ html, body{
 .btn-primary:hover{
     background-color: var(--color-black);
 }
+.btn-primary-accent{
+    padding: 11px 27px;
+    font-family: "Plus Jakarta Sans", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 500;
+    font-style: normal;
+    background-color: var(--color-accent);
+    color: var(--color-white);
+    border-radius: 7px;
+    cursor: pointer;
+}
+.btn-primary-accent:hover{
+    background-color: var(--color-black);
+}
 .btn-border{
     padding: 11px 27px;
     font-family: "Plus Jakarta Sans", sans-serif;
@@ -53,6 +67,23 @@ html, body{
 .btn-border:hover{
     background-color: var(--color-black);
     color: var(--color-white);
+}
+.btn-border-white{
+    padding: 11px 27px;
+    font-family: "Plus Jakarta Sans", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 500;
+    font-style: normal;
+    border: 1px solid var(--color-white);
+    /* border: "1px solid var(--color-primary)"; */
+    color: var(--color-white);
+    border-radius: 7px;
+    cursor: pointer;
+}
+.btn-border-white:hover{
+    background-color: var(--color-black);
+    color: var(--color-white);
+    border: 1px solid var(--color-black);
 }
 
 .font-jakarta {
@@ -78,4 +109,32 @@ html, body{
     font-weight: 500;
     font-style: normal;
     font-size: 21px;
+}
+
+.shine-bar {
+  position: absolute;
+  top: -50%;
+  left: -75%;
+  width: 50%;
+  height: 200%;
+  background: linear-gradient(
+    to right,
+    transparent 0%,
+    rgba(207, 233, 236, 0.4) 35%,
+    rgba(255, 255, 255, 0.7) 50%,
+    rgba(207, 233, 236, 0.4) 65%,
+    transparent 100%
+  );
+  transform: skewX(-25deg);
+  pointer-events: none;
+  opacity: 0;
+}
+
+.group:hover .shine-bar {
+  animation: shine-sweep 1.2s ease-out forwards;
+}
+
+@keyframes shine-sweep {
+  0% { left: -75%; opacity: 1; }
+  100% { left: 125%; opacity: 1; }
 }
