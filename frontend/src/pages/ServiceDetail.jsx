@@ -71,18 +71,18 @@ const ServiceDetail = () => {
 
               {/* Service Images */}
               <div className="flex flex-col sm:flex-row gap-5 mb-10">
-                <div className="flex-[3] overflow-hidden rounded-3xl">
+                <div className="flex-3 overflow-hidden rounded-3xl">
                   <img
                     src={`https://picsum.photos/seed/${service.id}-a/800/500`}
                     alt={service.title}
-                    className="w-full h-full object-cover min-h-[240px] hover:scale-[1.02] transition-transform duration-500"
+                    className="w-full h-full object-cover min-h-60 hover:scale-[1.02] transition-transform duration-500"
                   />
                 </div>
-                <div className="flex-[2] overflow-hidden rounded-3xl">
+                <div className="flex-2 overflow-hidden rounded-3xl">
                   <img
                     src={`https://picsum.photos/seed/${service.id}-b/600/500`}
                     alt={`${service.title} - details`}
-                    className="w-full h-full object-cover min-h-[240px] hover:scale-[1.02] transition-transform duration-500"
+                    className="w-full h-full object-cover min-h-60 hover:scale-[1.02] transition-transform duration-500"
                   />
                 </div>
               </div>
@@ -139,11 +139,11 @@ const ServiceDetail = () => {
             </div>
 
             {/* Right Sticky Sidebar - Pricing */}
-            <div className="w-full lg:w-[340px] shrink-0">
+            <div className="w-full lg:w-85 shrink-0">
               <div className="lg:sticky lg:top-28">
                 <div className="bg-white border border-gray-200 rounded-3xl overflow-hidden shadow-[0_4px_24px_rgba(0,0,0,0.04)]">
                   {/* Accent top bar */}
-                  <div className="h-1.5 bg-linear-to-r from-[var(--color-accent)] to-[var(--color-primary)]"></div>
+                  <div className="h-1.5 bg-linear-to-r from-(--color-accent) to-(--color-primary)"></div>
 
                   <div className="p-8">
                     <div className="mb-6">
@@ -161,8 +161,8 @@ const ServiceDetail = () => {
                       <div className="flex flex-col gap-3">
                         {service.bullets && service.bullets.slice(0, 4).map((bullet, i) => (
                           <div key={i} className="flex items-center gap-2.5">
-                            <div className="w-5 h-5 rounded-full bg-[var(--color-accent)]/10 flex items-center justify-center shrink-0">
-                              <Check size={12} className="text-[var(--color-accent)]" strokeWidth={3} />
+                            <div className="w-5 h-5 rounded-full bg-(--color-accent)/10 flex items-center justify-center shrink-0">
+                              <Check size={12} className="text-(--color-accent)" strokeWidth={3} />
                             </div>
                             <span className="text-[14px] text-(--color-gray)">{bullet}</span>
                           </div>
@@ -173,7 +173,7 @@ const ServiceDetail = () => {
                     {/* CTA Button */}
                     <button
                       onClick={handleGetStarted}
-                      className="w-full flex items-center justify-center gap-2 bg-(--color-primary) hover:bg-(--color-primary-dark) text-white rounded-full py-[14px] font-medium text-[16px] transition-all duration-200 cursor-pointer shadow-sm hover:shadow-md"
+                      className="w-full flex items-center justify-center gap-2 bg-(--color-primary) hover:bg-(--color-primary-dark) text-white rounded-full py-3.5 font-medium text-[16px] transition-all duration-200 cursor-pointer shadow-sm hover:shadow-md"
                     >
                       {user ? 'Go to Dashboard' : 'Get Started'}
                       <ArrowRight size={18} />

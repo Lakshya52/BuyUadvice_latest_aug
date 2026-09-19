@@ -54,7 +54,7 @@ const Services = () => {
 
       <div className='px-25 flex items-center justify-center w-full flex-col  '>
         {/* search bar */}
-        <div className="w-full max-w-360 sticky top-[70px] z-30 py-10 bg-(--color-white) " >
+        <div className="w-full max-w-360 sticky top-17.5 z-30 py-10 bg-(--color-white) " >
           <div className="relative w-full">
             <Search size={20} className="absolute left-6 top-1/2 -translate-y-1/2 text-(--color-primary) pointer-events-none" />
             <input

@@ -54,7 +54,7 @@ const Contact = () => {
       {/* Main Contact Section */}
       <section className="w-full flex justify-center py-20 px-6 md:px-25 bg-[#fbfaf7]">
         <div className="max-w-360 w-full grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20 items-center">
-          
+
           {/* Left Column: Contact Form */}
           <div className="lg:col-span-7 w-full bg-white border border-gray-100 rounded-3xl p-8 md:p-10 shadow-xs">
             {status === 'success' ? (
@@ -190,7 +190,7 @@ const Contact = () => {
               
               {/* Channel 1: Address */}
               <div className="flex items-start gap-5">
-                <div className="w-14 h-14 bg-[#E5E7EB]/60 rounded-xl flex items-center justify-center flex-shrink-0 text-(--color-primary)">
+                <div className="w-14 h-14 bg-[#E5E7EB]/60 rounded-xl flex items-center justify-center shrink-0 text-(--color-primary)">
                   <MapPin size={24} className="stroke-[1.75]" />
                 </div>
                 <div className="flex flex-col pt-1">
@@ -205,7 +205,7 @@ const Contact = () => {
 
               {/* Channel 2: Phone */}
               <div className="flex items-start gap-5">
-                <div className="w-14 h-14 bg-[#E5E7EB]/60 rounded-xl flex items-center justify-center flex-shrink-0 text-(--color-primary)">
+                <div className="w-14 h-14 bg-[#E5E7EB]/60 rounded-xl flex items-center justify-center shrink-0 text-(--color-primary)">
                   <Phone size={24} className="stroke-[1.75]" />
                 </div>
                 <div className="flex flex-col pt-1">
@@ -226,7 +226,7 @@ const Contact = () => {
 
               {/* Channel 3: Email */}
               <div className="flex items-start gap-5">
-                <div className="w-14 h-14 bg-[#E5E7EB]/60 rounded-xl flex items-center justify-center flex-shrink-0 text-(--color-primary)">
+                <div className="w-14 h-14 bg-[#E5E7EB]/60 rounded-xl flex items-center justify-center shrink-0 text-(--color-primary)">
                   <Mail size={24} className="stroke-[1.75]" />
                 </div>
                 <div className="flex flex-col pt-1">
@@ -253,7 +253,7 @@ const Contact = () => {
 
       {/* Google Maps Location Section */}
       <section className="w-full flex justify-center pb-20 px-6 md:px-25 bg-[#fbfaf7]">
-        <div className="max-w-360 w-full rounded-3xl overflow-hidden border border-gray-100 shadow-sm h-[400px]">
+        <div className="max-w-360 w-full rounded-3xl overflow-hidden border border-gray-100 shadow-sm h-100">
           <iframe 
             src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3736.7121361797617!2d77.322824175635!3d28.569068986959486!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x390ce5d6d7a56c8f%3A0x252d22e32720e8f3!2sBuyUadvice!5e1!3m2!1sen!2sin!4v1787812883140!5m2!1sen!2sin" 
             width="100%" 
