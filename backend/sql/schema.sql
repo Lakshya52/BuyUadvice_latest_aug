@@ -1,5 +1,9 @@
-CREATE DATABASE IF NOT EXISTS buyuadvice;
-USE buyuadvice;
+-- BuyUadvice schema.
+-- Local: create database `buyuadvice_latest` first (or change the name below),
+-- then:  mysql -u root -p buyuadvice_latest < backend/sql/schema.sql
+-- Hostinger: create the DB in hPanel, open it in phpMyAdmin, then Import this file
+-- (no CREATE DATABASE here — shared hosting disallows it; the tables land in the
+-- database you already selected). Set the same name in backend/.env as DB_NAME.
 
 CREATE TABLE IF NOT EXISTS users (
     id INT AUTO_INCREMENT PRIMARY KEY,

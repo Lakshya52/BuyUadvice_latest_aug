@@ -1,79 +1,44 @@
-$source = "C:\Users\ACEONE\Desktop\Buyuadvice 25-08-2026"
-$deploy = "C:\Users\ACEONE\Desktop\Buyuadvice 25-08-2026\deployment"
+# BuyUadvice deploy — backend/ IS the Hostinger public_html upload.
+# Run from repo root:  .\deploy.ps1
+# 1. builds frontend (auto-syncs dist -> backend/)
+# 2. verifies backend/ is a complete upload (SPA + API + .htaccess)
+# 3. you upload backend/* (not the folder itself) to public_html/ + import sql once.
 
-Write-Host "=== BuyUadvice Deploy Script ===" -ForegroundColor Cyan
+$root = $PSScriptRoot
+$backend = Join-Path $root 'backend'
 
-# 1. Build frontend
-Write-Host "`n[1/5] Building frontend..." -ForegroundColor Yellow
-Set-Location "$source\frontend"
+Write-Host '=== BuyUadvice Deploy (backend/ = public_html) ===' -ForegroundColor Cyan
+
+# 1. Build frontend (package.json build step auto-copies dist -> backend/)
+Write-Host "`n[1/2] Building frontend..." -ForegroundColor Yellow
+Set-Location (Join-Path $root 'frontend')
 npm run build
 if ($LASTEXITCODE -ne 0) {
-    Write-Host "Build failed!" -ForegroundColor Red
+    Write-Host 'Build failed!' -ForegroundColor Red
     exit 1
 }
-Write-Host "Frontend built successfully." -ForegroundColor Green
+Write-Host 'Frontend built + synced to backend/.' -ForegroundColor Green
 
-# 2. Create clean deployment folder
-Write-Host "`n[2/5] Preparing deployment folder..." -ForegroundColor Yellow
-if (Test-Path $deploy) {
-    Remove-Item $deploy -Recurse -Force
+# 2. Verify upload folder
+Write-Host "`n[2/2] Verifying backend/ upload..." -ForegroundColor Yellow
+Set-Location $root
+$required = @('index.html', 'index.php', '.htaccess', 'auth', 'config', 'vendor')
+$missing = @()
+foreach ($item in $required) {
+    if (-not (Test-Path (Join-Path $backend $item))) { $missing += $item }
 }
-New-Item -ItemType Directory -Path $deploy -Force | Out-Null
-New-Item -ItemType Directory -Path "$deploy\backend" -Force | Out-Null
+if ($missing.Count -gt 0) {
+    Write-Host ("Missing in backend/: " + ($missing -join ', ')) -ForegroundColor Red
+    exit 1
+}
 
-# 3. Copy frontend build to deployment root
-Write-Host "`n[3/5] Copying frontend build to deployment root..." -ForegroundColor Yellow
-robocopy "$source\frontend\dist" "$deploy" /E /NJH /NJS /NP /NDL
-robocopy "$source\frontend\public" "$deploy" /E /NJH /NJS /NP /NDL /XD heroimages servicesimages node_modules
-
-# 4. Copy backend PHP files to deployment/backend (excluding vendor)
-Write-Host "`n[4/5] Copying backend PHP files..." -ForegroundColor Yellow
-robocopy "$source\backend" "$deploy\backend" /E /NJH /NJS /NP /NDL /XD vendor node_modules
-
-# 5. Copy vendor folder
-Write-Host "`n[5/5] Copying vendor folder..." -ForegroundColor Yellow
-robocopy "$source\backend\vendor" "$deploy\backend\vendor" /E /NJH /NJS /NP /NDL
-
-# 6. Create .htaccess files for Hostinger
-Write-Host "`nCreating .htaccess files..." -ForegroundColor Yellow
-
-# Root .htaccess
-$rootHtaccess = @"
-<IfModule mod_rewrite.c>
-  RewriteEngine On
-  RewriteBase /
-
-  # Route /backend/* non-file requests to backend/index.php (API router)
-  RewriteCond %{REQUEST_URI} ^/backend/
-  RewriteCond %{REQUEST_FILENAME} !-f
-  RewriteRule ^backend/(.*)$ backend/index.php [QSA,L]
-
-  # Pass existing /backend/ files through (images, CSS, JS etc)
-  RewriteCond %{REQUEST_URI} ^/backend/ [NC]
-  RewriteRule ^ - [L]
-
-  # SPA fallback - serve React app for all other routes
-  RewriteCond %{REQUEST_FILENAME} !-f
-  RewriteCond %{REQUEST_FILENAME} !-d
-  RewriteRule . /index.html [L]
-</IfModule>
-
-<IfModule mod_headers.c>
-    Header set Access-Control-Allow-Credentials "true"
-</IfModule>
-"@
-Set-Content -Path "$deploy\.htaccess" -Value $rootHtaccess -Encoding UTF8
-
-# Backend .htaccess (empty - routing handled by root .htaccess)
-Set-Content -Path "$deploy\backend\.htaccess" -Value "" -Encoding UTF8
-
-# 7. Verify
-Write-Host "`n=== Deployment Ready ===" -ForegroundColor Green
-Write-Host "Location: $deploy" -ForegroundColor Cyan
-Write-Host ""
-Write-Host "Root:" -ForegroundColor Yellow
-Get-ChildItem $deploy | Format-Table Name, Mode -AutoSize
-Write-Host "Backend:" -ForegroundColor Yellow
-Get-ChildItem "$deploy\backend" | Format-Table Name, Mode -AutoSize
-Write-Host ""
-Write-Host "Upload the entire 'deployment' folder contents to Hostinger public_html/" -ForegroundColor Cyan
+Write-Host "`n=== Ready to upload ===" -ForegroundColor Green
+Write-Host "Source : $backend" -ForegroundColor Cyan
+Write-Host 'Target : Hostinger public_html/ (upload CONTENTS of backend/, not the folder)'
+Write-Host ''
+Write-Host 'Backend (upload all):' -ForegroundColor Yellow
+Get-ChildItem $backend | Format-Table Name, Mode -AutoSize
+Write-Host ''
+Write-Host 'DB: create MySQL DB in hPanel, import backend/sql/schema.sql via phpMyAdmin (once),' -ForegroundColor Cyan
+Write-Host 'then set production DB_* in backend/.env before uploading.' -ForegroundColor Cyan
+Write-Host 'NOTE: deployment/ folder is deprecated and no longer used.' -ForegroundColor DarkYellow

@@ -2,3 +2,14 @@ vendor
 .env
 *.log
 .DS_Store
+
+# Built frontend copy (npm run build auto-syncs frontend/dist -> here).
+# This folder IS the Hostinger public_html upload, so these files exist locally
+# but are generated — do not commit them.
+/index.html
+/assets/
+/heroimages/
+/servicesimages/
+/*.png
+/*.svg
+/*.ico

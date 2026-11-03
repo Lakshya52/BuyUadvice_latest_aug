@@ -1,10 +1,28 @@
-import React from 'react';
-import { useParams, useNavigate, Link } from 'react-router-dom';
-import { FileText, Check, ArrowRight, ArrowLeft, ShieldCheck, ClipboardList, CircleCheckBig } from 'lucide-react';
-import PageHeader from '../components/PageHeader';
+import { Link, useNavigate, useParams } from 'react-router-dom';
+import {
+  ArrowLeft,
+  ArrowRight,
+  Check,
+  ClipboardCheck,
+  FileText,
+  IndianRupee,
+  ShieldCheck,
+} from 'lucide-react';
 import { useAuth } from '../context/AuthContext';
 import data from '../data/data.json';
-import iconMap from '../data/iconMap';
+
+const categoryLabels = {
+  registrations: 'Registrations & Licenses',
+  trademark: 'Trademark',
+  gst: 'GST',
+  'income-tax': 'Income Tax',
+  mca: 'MCA',
+  compliance: 'Compliance',
+  'foreign-accounting': 'Foreign Accounting',
+  startup: 'Startup',
+};
+
+const formatPrice = (price) => Number(price).toLocaleString('en-IN');
 
 const ServiceDetail = () => {
   const { id } = useParams();
@@ -12,215 +30,298 @@ const ServiceDetail = () => {
   const { user, openLogin } = useAuth();
 
   const allServices = Object.values(data.services).flat();
-  const service = allServices.find(s => s.id === id);
-
-  const currentCategory = Object.keys(data.services).find(key =>
-    data.services[key].some(s => s.id === id)
+  const service = allServices.find((item) => item.id === id);
+  const currentCategory = Object.keys(data.services).find((key) =>
+    data.services[key].some((item) => item.id === id)
   );
-  const relatedServices = currentCategory
-    ? data.services[currentCategory].filter(s => s.id !== id).slice(0, 4)
+  const categoryServices = currentCategory ? data.services[currentCategory] : [];
+  const pricingServices = service
+    ? [service, ...categoryServices.filter((item) => item.id !== id)].slice(0, 3)
     : [];
-
-  if (!service) {
-    return (
-      <>
-        <PageHeader heading="Service Not Found" paragraph="The service you're looking for doesn't exist." />
-        <div className="flex flex-col items-center justify-center py-20 px-25">
-          <button onClick={() => navigate('/services')} className="flex items-center gap-2 text-(--color-primary) font-semibold hover:underline cursor-pointer">
-            <ArrowLeft size={18} /> Back to Services
-          </button>
-        </div>
-      </>
-    );
-  }
+  const relatedServices = categoryServices.filter((item) => item.id !== id);
 
   const handleGetStarted = () => {
     if (!user) {
       openLogin();
-    } else {
-      navigate('/dashboard');
+      return;
     }
+
+    navigate('/dashboard');
   };
+
+  if (!service) {
+    return (
+      <>
+        <section className="bg-white px-6 py-24 text-center">
+          <h1 className="text-4xl font-bold text-(--color-primary)">Service not found</h1>
+          <p className="mt-4 text-(--color-gray)">The service you’re looking for doesn’t exist.</p>
+          <button
+            onClick={() => navigate('/services')}
+            className="mt-8 inline-flex items-center gap-2 rounded-full bg-(--color-primary) px-6 py-3 font-semibold text-white transition-colors hover:bg-(--color-primary-dark)"
+          >
+            <ArrowLeft size={18} />
+            Back to Services
+          </button>
+        </section>
+      </>
+    );
+  }
 
   return (
     <>
-      <PageHeader heading={service.title} paragraph={service.shortAbstract} />
+      <main className="bg-white">
+        <section className="relative overflow-hidden border-b rounded-b-[80px] border-slate-100 bg-linear-to-t from-(--color-accent-dark)/40 to-white px-6 pb-14 pt-8 md:px-10 md:pb-16">
+          <div className="relative z-10 mx-auto max-w-7xl">
+            <Link
+              to="/services"
+              className="inline-flex w-full items-center justify-center gap-2 text-sm font-semibold text-slate-500 transition-colors hover:text-(--color-primary)"
+            >
+              <ArrowLeft size={16} />
+              All services
+            </Link>
 
-      <div className="w-full px-25 py-16">
-        <div className="max-w-360 mx-auto w-full">
-
-          {/* Back */}
-          <button onClick={() => navigate('/services')} className="flex items-center gap-2 text-[14px] text-gray-500 hover:text-(--color-primary) transition-colors mb-10 cursor-pointer">
-            <ArrowLeft size={16} strokeWidth={2.5} />
-            Back to Services
-          </button>
-
-          {/* Two Column Layout */}
-          <div className="flex flex-col lg:flex-row gap-12">
-
-            {/* Left Content */}
-            <div className="flex-1 min-w-0">
-
-              {/* What is this service */}
-              <div className="mb-10">
-                <div className="flex items-center gap-3 mb-5">
-                  <h2 className="text-[26px] font-bold text-(--color-primary)">{service.heading1}</h2>
-                </div>
-                <p className="text-[16px] text-(--color-gray) leading-[1.85]">{service.paragraph1}</p>
-              </div>
-
-              {/* Service Images */}
-              <div className="flex flex-col sm:flex-row gap-5 mb-10">
-                <div className="flex-3 overflow-hidden rounded-3xl">
-                  <img
-                    src={`https://picsum.photos/seed/${service.id}-a/800/500`}
-                    alt={service.title}
-                    className="w-full h-full object-cover min-h-60 hover:scale-[1.02] transition-transform duration-500"
-                  />
-                </div>
-                <div className="flex-2 overflow-hidden rounded-3xl">
-                  <img
-                    src={`https://picsum.photos/seed/${service.id}-b/600/500`}
-                    alt={`${service.title} - details`}
-                    className="w-full h-full object-cover min-h-60 hover:scale-[1.02] transition-transform duration-500"
-                  />
-                </div>
-              </div>
-
-              {/* Bullets */}
-              {service.bullets && service.bullets.length > 0 && (
-                <div className="mb-12">
-                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                    {service.bullets.map((bullet, i) => (
-                      <div key={i} className="flex items-center gap-3 bg-linear-to-r from-(--color-accent-light) to-white rounded-2xl px-6 py-5 border border-(--color-accent)/10">
-                        <div className="w-9 h-9 rounded-full bg-(--color-accent) flex items-center justify-center shrink-0 shadow-sm">
-                          <Check size={16} className="text-white" strokeWidth={3} />
-                        </div>
-                        <span className="text-[15px] font-semibold text-(--color-primary)">{bullet}</span>
-                      </div>
-                    ))}
-                  </div>
-                </div>
-              )}
-
-              {/* Divider */}
-              <div className="border-t border-gray-200 my-12"></div>
-
-              {/* How we assist */}
-              <div className="mb-12">
-                <div className="flex items-center gap-3 mb-5">
-                  {/* <div className="w-10 h-10 rounded-xl bg-[var(--color-accent)] flex items-center justify-center">
-                    <ShieldCheck size={20} className="text-white" />
-                  </div> */}
-                  <h2 className="text-[26px] font-bold text-(--color-primary)">{service.heading2}</h2>
-                </div>
-                <p className="text-[16px] text-(--color-gray) leading-[1.85]">{service.paragraph2}</p>
-              </div>
-
-              {/* Required Documents */}
-              {service.documents && service.documents.length > 0 && (
-                <div className="mb-12">
-                  <div className="flex items-center gap-3 mb-6">
-                    <h2 className="text-[24px] font-bold text-(--color-primary)">Required Documents</h2>
-                  </div>
-                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                    {service.documents.map((doc, i) => (
-                      <div key={i} className="flex items-center gap-3 bg-linear-to-r from-(--color-accent-light) to-white rounded-2xl px-6 py-5 border border-(--color-accent)/10">
-                        <div className="w-9 h-9 rounded-full bg-(--color-accent) flex items-center justify-center shrink-0 shadow-sm">
-                          <span className="text-white text-[12px] font-bold">{i + 1}</span>
-                        </div>
-                        <span className="text-[15px] font-semibold text-(--color-primary)">{doc}</span>
-                      </div>
-                    ))}
-                  </div>
-                </div>
-              )}
-
+            <div className="mx-auto mt-7 max-w-4xl text-center sm:mt-9">
+              <p className="mb-2 text-xs font-semibold uppercase tracking-[0.14em] text-(--color-accent-dark)">
+                Business compliance, made simpler
+              </p>
+              <h1 className="text-3xl font-semibold leading-tight tracking-tight text-(--color-primary) sm:text-4xl">
+                <span className="text-(--color-accent-dark)">{service.title}</span> with expert support
+              </h1>
+              <p className="mx-auto mt-2 max-w-2xl text-sm leading-6 text-slate-500 sm:text-base">
+                {service.shortAbstract}
+              </p>
+              <a
+                href="#pricing"
+                className="mx-auto mt-5 inline-flex flex-wrap items-center justify-center gap-x-2 gap-y-1 rounded-lg border border-(--color-accent) bg-white px-4 py-2.5 text-sm text-slate-600 shadow-sm transition hover:bg-(--color-accent-light)/50"
+              >
+                <span>Get started from</span>
+                <strong className="font-bold text-(--color-primary)">₹{formatPrice(service.price)}</strong>
+                <span className="text-slate-500">+ applicable taxes</span>
+                <span className="font-semibold text-(--color-accent-dark) underline underline-offset-4">View pricing</span>
+              </a>
             </div>
 
-            {/* Right Sticky Sidebar - Pricing */}
-            <div className="w-full lg:w-85 shrink-0">
-              <div className="lg:sticky lg:top-28">
-                <div className="bg-white border border-gray-200 rounded-3xl overflow-hidden shadow-[0_4px_24px_rgba(0,0,0,0.04)]">
-                  {/* Accent top bar */}
-                  <div className="h-1.5 bg-linear-to-r from-(--color-accent) to-(--color-primary)"></div>
-
-                  <div className="p-8">
-                    <div className="mb-6">
-                      <p className="text-[13px] text-gray-400 uppercase tracking-wider font-medium mb-2">Starting at</p>
-                      <div className="flex items-baseline gap-1">
-                        <span className="text-[16px] text-(--color-primary) font-semibold">₹</span>
-                        <span className="text-[42px] font-bold text-(--color-primary) leading-none">{service.price.toLocaleString('en-IN')}</span>
-                      </div>
-                      <p className="text-[13px] text-gray-400 mt-1">+ applicable taxes</p>
-                    </div>
-
-                    {/* What's included */}
-                    <div className="border-t border-gray-100 pt-6 mb-8">
-                      <p className="text-[13px] text-gray-500 font-semibold uppercase tracking-wider mb-4">What's included</p>
-                      <div className="flex flex-col gap-3">
-                        {service.bullets && service.bullets.slice(0, 4).map((bullet, i) => (
-                          <div key={i} className="flex items-center gap-2.5">
-                            <div className="w-5 h-5 rounded-full bg-(--color-accent)/10 flex items-center justify-center shrink-0">
-                              <Check size={12} className="text-(--color-accent)" strokeWidth={3} />
-                            </div>
-                            <span className="text-[14px] text-(--color-gray)">{bullet}</span>
-                          </div>
-                        ))}
-                      </div>
-                    </div>
-
-                    {/* CTA Button */}
-                    <button
-                      onClick={handleGetStarted}
-                      className="w-full flex items-center justify-center gap-2 bg-(--color-primary) hover:bg-(--color-primary-dark) text-white rounded-full py-3.5 font-medium text-[16px] transition-all duration-200 cursor-pointer shadow-sm hover:shadow-md"
-                    >
-                      {user ? 'Go to Dashboard' : 'Get Started'}
-                      <ArrowRight size={18} />
-                    </button>
-
-                    {!user && (
-                      <p className="text-[12px] text-gray-400 mt-3 text-center">Login or sign up to avail this service</p>
-                    )}
+            <div className="mx-auto mt-7 max-w-6xl rounded-3xl border border-slate-100 bg-white p-5 shadow-[0_18px_48px_rgba(24,43,79,0.10)] sm:mt-9 sm:p-8 lg:p-10">
+              <div className="grid gap-8 md:grid-cols-2 md:gap-12">
+                <div className="flex flex-col justify-center">
+                  <div className="mb-4 flex h-10 w-10 items-center justify-center rounded-xl bg-(--color-accent-light) text-(--color-accent-dark)">
+                    <ClipboardCheck size={21} />
                   </div>
+                  <h2 className="text-xl font-semibold text-(--color-primary) sm:text-2xl">
+                    Apply for {service.title}
+                  </h2>
+                  <p className="mt-2 max-w-md text-sm leading-6 text-slate-500">
+                    Get clear guidance at every step, from preparing your application to understanding what comes next.
+                  </p>
+                  <ul className="mt-5 grid gap-3 sm:grid-cols-2 md:grid-cols-1">
+                    {(service.bullets || []).slice(0, 5).map((bullet) => (
+                      <li key={bullet} className="flex items-center gap-2.5 text-sm text-slate-600">
+                        <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-(--color-accent-light) text-(--color-accent-dark)">
+                          <Check size={13} strokeWidth={3} />
+                        </span>
+                        {bullet}
+                      </li>
+                    ))}
+                  </ul>
                 </div>
-              </div>
-            </div>
 
-          </div>
-
-          {/* Related Services */}
-          {relatedServices.length > 0 && (
-            <div className="mt-20">
-              <div className="border-t border-gray-200 mb-12"></div>
-              <h2 className="text-[26px] font-bold text-(--color-primary) mb-8">Related Services</h2>
-              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-                {relatedServices.map((related) => (
-                  <Link
-                    key={related.id}
-                    to={`/services/${related.id}`}
-                    className="card-shine group flex flex-col p-6 bg-white rounded-[24px] border border-gray-200 hover:-translate-y-2 hover:shadow-[0_8px_64px_rgba(47,164,169,0.25)] transition-all duration-300 cursor-pointer overflow-hidden"
+                <div className="flex flex-col justify-center rounded-2xl bg-slate-50 p-5 sm:p-7">
+                  <div className="flex items-center gap-3">
+                    <span className="flex h-10 w-10 items-center justify-center rounded-xl bg-white text-(--color-accent-dark) shadow-sm">
+                      <ShieldCheck size={21} />
+                    </span>
+                    <div>
+                      <p className="text-sm font-semibold text-(--color-primary)">Expert support, from start to finish</p>
+                      <p className="mt-0.5 text-xs text-slate-500">A simple place to get your application moving</p>
+                    </div>
+                  </div>
+                  <div className="my-5 border-t border-slate-200" />
+                  <p className="text-sm leading-6 text-slate-600">
+                    Start your application online and get guidance on the requirements for your business.
+                  </p>
+                  <button
+                    onClick={handleGetStarted}
+                    className="mt-5 inline-flex w-full items-center justify-center gap-2 rounded-lg bg-(--color-primary) px-5 py-3 text-sm font-semibold text-white transition hover:bg-(--color-primary-dark) focus:outline-none focus-visible:ring-4 focus-visible:ring-(--color-accent-light)"
                   >
-                    <div className="shine-bar"></div>
-                    <div className="mb-3 text-(--color-accent)">
-                      {iconMap[related.icon] ? React.createElement(iconMap[related.icon], { size: 24, strokeWidth: 1.75 }) : null}
+                    {user ? 'Go to Dashboard' : 'Continue'}
+                    <ArrowRight size={17} />
+                  </button>
+                  {!user && (
+                    <p className="mt-2 text-center text-xs text-slate-400">
+                      Sign in or create an account to continue
+                    </p>
+                  )}
+                </div>
+              </div>
+
+              <div className="mt-7 grid gap-px overflow-hidden rounded-xl border border-slate-200 bg-slate-200 sm:grid-cols-3">
+                {[
+                  { icon: ShieldCheck, title: 'Expert guidance', detail: 'Support for your application' },
+                  { icon: IndianRupee, title: 'Clear pricing', detail: 'See the price before you start' },
+                  { icon: FileText, title: 'Document support', detail: 'Know what to prepare' },
+                ].map(({ icon: Icon, title, detail }) => (
+                  <div key={title} className="flex items-center gap-3 bg-white px-4 py-3 sm:justify-center sm:px-3">
+                    <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-(--color-accent-light) text-(--color-accent-dark)">
+                      <Icon size={17} />
+                    </span>
+                    <div>
+                      <p className="text-xs font-bold text-(--color-primary)">{title}</p>
+                      <p className="mt-0.5 text-[11px] text-slate-500">{detail}</p>
                     </div>
-                    <h3 className="text-[17px] font-bold text-(--color-primary) mb-2">{related.title}</h3>
-                    <p className="text-[13px] text-(--color-gray) leading-relaxed mb-5 line-clamp-3">{related.shortAbstract}</p>
-                    <div className="flex items-center gap-1 text-[14px] font-semibold text-(--color-accent) mt-auto group-hover:gap-2 transition-all duration-300">
-                      View Details <ArrowRight size={16} />
-                    </div>
-                  </Link>
+                  </div>
                 ))}
               </div>
-              <Link to="/services" className="group flex items-center gap-0 justify-center mt-8 text-[15px] font-semibold text-(--color-primary) hover:text-(--color-accent) transition-colors duration-300 cursor-pointer">
-                View All Services <span className="inline-block w-0 overflow-hidden opacity-0 group-hover:w-5 group-hover:opacity-100 group-hover:ml-2 transition-all duration-300"><ArrowRight size={18} /></span>
-              </Link>
             </div>
-          )}
+          </div>
+        </section>
 
-        </div>
-      </div>
+        <section id="pricing" className="scroll-mt-10 px-6 py-16 sm:px-10 sm:py-20">
+          <div className="mx-auto max-w-7xl">
+            <div className="mx-auto mb-10 max-w-2xl text-center">
+              <p className="text-sm font-bold uppercase tracking-[0.18em] text-(--color-accent)">
+                {categoryLabels[currentCategory] || currentCategory}
+              </p>
+              <h2 className="mt-3 text-3xl font-semibold tracking-tight text-(--color-primary) sm:text-4xl">
+                Explore services and pricing
+              </h2>
+              <p className="mt-3 text-slate-500">
+                Choose the service that fits your needs. Prices shown are starting prices.
+              </p>
+            </div>
+
+            <div className="grid items-stretch gap-6 lg:grid-cols-3">
+              {pricingServices.map((item) => {
+                const isCurrentService = item.id === service.id;
+
+                return (
+                  <article
+                    key={item.id}
+                    className={`relative flex flex-col rounded-3xl bg-white p-6 shadow-[0_8px_32px_rgba(15,23,42,0.08)] transition duration-300 hover:-translate-y-1 hover:shadow-[0_16px_40px_rgba(15,23,42,0.12)] sm:p-8 ${
+                      isCurrentService
+                        ? 'border border-(--color-accent) ring-1 ring-(--color-accent-light)'
+                        : 'border border-slate-100'
+                    }`}
+                  >
+                    {isCurrentService && (
+                      <span className="absolute -top-3 left-7 rounded-full bg-(--color-primary) px-3 py-1 text-xs font-bold text-white shadow-sm">
+                        Most Seen
+                      </span>
+                    )}
+                    <h3 className="mt-2 text-xl font-semibold text-(--color-primary)">{item.title}</h3>
+                    <p className="mt-3 min-h-16 text-sm leading-6 text-slate-500">{item.shortAbstract}</p>
+                    <div className="mt-6 border-t border-slate-100 pt-5">
+                      <p className="text-xs font-semibold uppercase tracking-wider text-slate-400">Starting at</p>
+                      <p className="mt-1 text-3xl font-bold text-(--color-primary)">
+                        ₹{formatPrice(item.price)}
+                      </p>
+                      <p className="text-xs text-slate-400">+ applicable taxes</p>
+                    </div>
+                    <div className="mt-6">
+                      <p className="mb-4 text-sm font-semibold text-slate-600">What’s included:</p>
+                      <ul className="space-y-3">
+                        {(item.bullets || []).slice(0, 5).map((bullet) => (
+                          <li key={bullet} className="flex items-start gap-2.5 text-sm text-slate-500">
+                            <Check size={17} className="mt-0.5 shrink-0 text-(--color-accent-dark)" strokeWidth={2.5} />
+                            <span>{bullet}</span>
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+                    <div className="mt-auto pt-8">
+                      {isCurrentService ? (
+                        <button
+                          onClick={handleGetStarted}
+                          className="inline-flex w-full items-center justify-center gap-2 rounded-xl bg-(--color-primary) px-5 py-3.5 font-bold text-white transition hover:bg-(--color-primary-dark)"
+                        >
+                          Start this service <ArrowRight size={17} />
+                        </button>
+                      ) : (
+                        <Link
+                          to={`/services/${item.id}`}
+                          className="inline-flex w-full items-center justify-center gap-2 rounded-xl border border-(--color-accent)/30 bg-(--color-accent-light) px-5 py-3.5 font-bold text-(--color-primary) transition hover:bg-(--color-accent-light)/70"
+                        >
+                          View service <ArrowRight size={17} />
+                        </Link>
+                      )}
+                    </div>
+                  </article>
+                );
+              })}
+            </div>
+          </div>
+        </section>
+
+        <section className="bg-[#f8fafc] px-6 py-16 sm:px-10 sm:py-20">
+          <div className="mx-auto max-w-7xl">
+            <div className="grid gap-8 lg:grid-cols-2 lg:gap-12">
+              <article className="rounded-3xl border border-slate-100 bg-white p-7 shadow-sm sm:p-9">
+                <p className="text-sm font-bold uppercase tracking-[0.16em] text-(--color-accent)">The service</p>
+                <h2 className="mt-3 text-2xl font-semibold text-(--color-primary)">{service.heading1}</h2>
+                <p className="mt-4 text-sm leading-7 text-slate-600 sm:text-base">{service.paragraph1}</p>
+              </article>
+              <article className="rounded-3xl border border-slate-100 bg-white p-7 shadow-sm sm:p-9">
+                <p className="text-sm font-bold uppercase tracking-[0.16em] text-(--color-accent)">How we help</p>
+                <h2 className="mt-3 text-2xl font-semibold text-(--color-primary)">{service.heading2}</h2>
+                <p className="mt-4 text-sm leading-7 text-slate-600 sm:text-base">{service.paragraph2}</p>
+              </article>
+            </div>
+
+            {service.documents?.length > 0 && (
+              <div className="mt-8 overflow-hidden rounded-3xl border border-slate-200 bg-white shadow-[0_12px_36px_rgba(24,43,79,0.06)]">
+                <div className="flex flex-col gap-4 bg-linear-to-r from-(--color-accent-light)/55 via-white to-white px-6 py-6 sm:flex-row sm:items-center sm:justify-between sm:px-8">
+                  <div className="flex items-center gap-4">
+                    <span className="flex h-12 w-12 shrink-0 items-center justify-center rounded-2xl bg-white text-(--color-primary) shadow-sm ring-1 ring-(--color-accent)/15">
+                      <FileText size={22} />
+                    </span>
+                    <div>
+                      <p className="text-xs font-bold uppercase tracking-[0.16em] text-(--color-accent-dark)">Get prepared</p>
+                      <h2 className="mt-1 text-xl font-semibold text-(--color-primary) sm:text-2xl">Documents you may need</h2>
+                    </div>
+                  </div>
+                  <p className="max-w-sm text-sm leading-6 text-slate-500 sm:text-right">
+                    Keep these documents handy to help your application move smoothly.
+                  </p>
+                </div>
+                <ul className="grid gap-3 border-t border-slate-100 bg-slate-50/60 p-5 sm:grid-cols-2 sm:p-7 lg:grid-cols-3">
+                  {service.documents.map((document) => (
+                    <li key={document} className="flex min-h-14 items-center gap-3 rounded-xl border border-slate-200/80 bg-white px-4 py-3 text-sm leading-5 text-slate-600 transition-colors hover:border-(--color-accent)/40 hover:bg-(--color-accent-light)/25">
+                      <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-(--color-accent-light) text-(--color-accent-dark)">
+                        <Check size={13} strokeWidth={3} />
+                      </span>
+                      <span>{document}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            )}
+
+            {relatedServices.length > 0 && (
+              <div className="mt-8 overflow-hidden rounded-3xl border border-slate-200 bg-white">
+                <h2 className="border-b border-slate-200 px-6 py-5 text-lg font-semibold text-(--color-primary) sm:px-8">
+                  Related services — {categoryLabels[currentCategory] || currentCategory}
+                </h2>
+                <div className="flex flex-wrap gap-2.5 p-6 sm:p-8">
+                  {relatedServices.map((related) => (
+                    <Link
+                      key={related.id}
+                      to={`/services/${related.id}`}
+                      className="rounded-lg border border-slate-200 bg-slate-50 px-3.5 py-2 text-sm text-slate-600 transition hover:border-(--color-accent) hover:bg-emerald-50 hover:text-(--color-primary)"
+                    >
+                      {related.title}
+                    </Link>
+                  ))}
+                  <Link
+                    to="/services"
+                    className="inline-flex items-center gap-1 rounded-lg border border-slate-200 px-3.5 py-2 text-sm font-semibold text-(--color-primary) transition hover:border-(--color-accent) hover:bg-emerald-50"
+                  >
+                    All services <ArrowRight size={15} />
+                  </Link>
+                </div>
+              </div>
+            )}
+          </div>
+        </section>
+      </main>
     </>
   );
 };

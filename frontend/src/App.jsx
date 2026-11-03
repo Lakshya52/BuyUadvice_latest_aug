@@ -7,6 +7,7 @@ import Dashboard from './pages/Dashboard'
 import ServiceDetail from './pages/ServiceDetail'
 import Navbar from './components/Navbar'
 import Footer from './components/Footer'
+import WhatsAppButton from './components/WhatsAppButton'
 
 import About from './pages/About'
 import Services from './pages/Services'
@@ -51,6 +52,7 @@ const App = () => {
     <BrowserRouter>
       <ScrollToTop />
       <AuthProvider>
+        <WhatsAppButton />
         <Routes>
           <Route path='/dashboard' element={<Dashboard />} />
           <Route path='*' element={
